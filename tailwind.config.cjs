@@ -38,5 +38,5 @@ export default {
       }
     },
   },
-  plugins: [require("tw-elements/plugin.cjs")],
+  plugins: [require("tw-elements/plugin.cjs"), require('flowbite/plugin')],
 }

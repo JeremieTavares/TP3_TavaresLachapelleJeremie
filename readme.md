@@ -21,3 +21,9 @@
 Pour arrêter le projet :
 
 -   `Control` + `C` (MAC)
+
+## Composants Tailwind
+
+Ce projet utilise ces composants tailwind:
+
+-   [Barre de navigation](https://flowbite.com/docs/components/navbar/#sticky-navbar) - C'est la barre de nagivation qui se trouve au haut de la page web
