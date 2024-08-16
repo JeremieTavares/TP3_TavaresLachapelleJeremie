@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+*:where(:not(html, iframe, canvas, img, svg, video, audio, b):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,10 @@
+// // Form already has a custom focus outline
+// *:focus:not(input):not(textarea):not(select) {
+//     border-bottom: 1.5px solid var.$outline-focus-wood-color !important;
+// }
+@use './../abstracts/variables' as var;
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}

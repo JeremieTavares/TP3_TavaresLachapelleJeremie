@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"forceConsistentCasingInFileNames": true,
+		"target": "es6",
+		"module": "ES2022",
+		"moduleResolution": "Bundler",
+		// "outDir": "./dist/index",
+		"strict": true,
+		"esModuleInterop": true
+	},
+	"include": ["./src/js/main.ts"]
+}
