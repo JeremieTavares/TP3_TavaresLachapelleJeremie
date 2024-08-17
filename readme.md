@@ -27,3 +27,5 @@ Pour arrêter le projet :
 Ce projet utilise ces composants tailwind:
 
 -   [Barre de navigation](https://flowbite.com/docs/components/navbar/#sticky-navbar) - C'est la barre de nagivation qui se trouve au haut de la page web
+
+-   [Carrousel d'image](https://flowbite.com/docs/components/carousel/#default-slider) - Afficher dans la hero section de la page d'accueil en mode mobile

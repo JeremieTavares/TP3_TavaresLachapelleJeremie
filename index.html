@@ -37,10 +37,8 @@
 <body class="relative bg-white">
   <!-- For screen reader accessibility -->
   <a href="#main-content" class="skip-to-main-link">Aller au contenu principal</a>
-
-  <header>
-    <nav
-      class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+  <header class="sticky top-0 left-0 z-50">
+    <nav class="bg-white dark:bg-gray-900  w-full z-20  border-b border-gray-200 dark:border-gray-600">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#main-content" class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
           <img src="./public/images/mimon_logo.png" class="h-12" alt="Mimon logo">
@@ -60,7 +58,9 @@
             </svg>
           </button>
         </div>
-        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <div
+          class="items-center justify-between hidden w-full px-1 md:flex md:w-auto md:order-1 absolute top-[64.5px] md:static right-0"
+          id="navbar-sticky">
           <ul
             class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
@@ -82,10 +82,86 @@
         </div>
       </div>
     </nav>
-
-
   </header>
+
   <main id="#main-content">
+
+    <!-- Start hero section -->
+    <section
+      class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+      <div class="container mx-auto px-5 lg:px-0">
+        <div class="grid grid-cols-2" id="allo">
+          <div class="col-span-2 md:col-span-1 mb-10">
+            <h1 class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+              Des destinations
+              inspirantes
+              pour vous
+              héberger</h1>
+            <p class="text-neutral-50 my-12 mr-20">
+              Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des voyageurs à la
+              recherche d'un
+              hébergement de courte durée ou de longue durée dans le monde entier.</p>
+            <div class="flex">
+              <a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener" class="cursor-pointer">
+                <img src="./public/images/download_apple_store_dark_fr_CA.svg"
+                  class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+              </a>
+              <a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+                class="cursor-pointer">
+                <img src="./public/images/download_google_store_dark_fr_CA.png" alt="Télécharger sur le Google store"
+                  class="w-[140px] md:w-[180px]">
+              </a>
+            </div>
+          </div>
+
+
+          <!-- Mobile image gallery -->
+          <div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+            <!-- Carousel wrapper -->
+            <div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+              <!-- Item 1 -->
+              <div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+                <img src="./public/images/island-destination.png"
+                  class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+                  alt="destination plage de Tahiti">
+              </div>
+              <!-- Item 2 -->
+              <div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+                <img src="./public/images/thailand-pool-destination.png"
+                  class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+                  alt="destination maison avec piscine en Thaïlande">
+              </div>
+              <!-- Item 3 -->
+              <div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+                <img src="./public/images/north-quebec-destination.png"
+                  class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+                  alt="destination nord du Québec">
+              </div>
+              <!-- Item 4 -->
+              <div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+                <img src="./public/images/cabin-in-the-wood-destination.png"
+                  class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+                  alt="destination maison dans le bois Caroline du Nord, USA">
+              </div>
+            </div>
+          </div>
+          <!-- End Mobile image gallery -->
+
+          <!-- Desktop image gallery -->
+          <div class="col-span-2 md:col-span-1 hidden md:block">
+            <div class="grid grid-cols-2 gap-4">
+              <img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+                alt="destination plage de Tahiti">
+              <img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+                alt="destination maison avec piscine en Thaïlande">
+              <img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+                alt="destination nord du Québec">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End hero section -->
 
   </main>
 </body>

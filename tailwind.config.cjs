@@ -35,7 +35,10 @@ export default {
           lg: '1024px',
           xl: '1280px',
         }
-      }
+      },
+      backgroundImage: {
+        'island-darken-blur': "url('/images/island-darken-blur.png')", // it's a relative path to the public folder
+      },
     },
   },
   plugins: [require("tw-elements/plugin.cjs"), require('flowbite/plugin')],
