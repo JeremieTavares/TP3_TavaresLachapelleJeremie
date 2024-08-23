@@ -2,206 +2,942 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espace Carrière</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Espace Carrière</title>
 
-    <!-- SEO -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Mimon - Centre d'aide">
-    <meta name="description"
-        content="Découvrez notre centre d'aide pour obtenir des réponses rapides à vos questions, accéder à des guides détaillés et contacter notre support pour une assistance personnalisée.">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="msapplication-navbutton-color" content="#ffffff">
+	<!-- SEO -->
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+	<meta property="og:locale" content="fr_FR">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Mimon - Centre d'aide">
+	<meta name="description"
+		content="Découvrez notre centre d'aide pour obtenir des réponses rapides à vos questions, accéder à des guides détaillés et contacter notre support pour une assistance personnalisée.">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="msapplication-navbutton-color" content="#ffffff">
 
-    <!-- Favicons -->
-    <link rel="icon" href="./../public/images/mimon_logo.png" sizes="32x32">
-    <link rel="icon" href="./../public/images/mimon_logo.png" sizes="192x192">
-    <link rel="apple-touch-icon" href="./public/images/mimon_logo.png">
+	<!-- Favicons -->
+	<link rel="icon" href="./../public/images/mimon_logo.png" sizes="32x32">
+	<link rel="icon" href="./../public/images/mimon_logo.png" sizes="192x192">
+	<link rel="apple-touch-icon" href="./public/images/mimon_logo.png">
 
-    <!-- Custom styles - Used to load tailwind css and utilities classes -->
-    <link rel="stylesheet" href="./../public/css/styles.css">
+	<!-- Custom styles - Used to load tailwind css and utilities classes -->
+	<link rel="stylesheet" href="./../public/css/styles.css">
+	<link rel="stylesheet" href="./../public/css/pages/career.css">
 
-    <!-- CDN styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- CDN styles -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- CDN scripts -->
-    <script src="https://kit.fontawesome.com/475ed1ea72.js" crossorigin="anonymous"></script>
+	<!-- CDN scripts -->
+	<script src="https://kit.fontawesome.com/475ed1ea72.js" crossorigin="anonymous"></script>
 
-    <!-- Custom scripts -->
-    <script src="./../public/js/main.js"></script>
+	<!-- Custom scripts -->
+	<script src="./../public/js/main.js"></script>
 </head>
 
 <body class="relative bg-white">
-    <!-- For screen reader accessibility -->
-    <a href="#main-content" class="skip-to-main-link">Aller au contenu principal</a>
+	<!-- For screen reader accessibility -->
+	<a href="#main-content" class="skip-to-main-link">Aller au contenu principal</a>
 
-    <header>
-        <nav
-            class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="#main-content" class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
-                    <img src="./../public/images/mimon_logo.png" class="h-12" alt="Mimon logo">
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700">Mimon</span>
-                </a>
-                <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                    <button type="button"
-                        class="text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 focus:ring-4 focus:outline-none font-medium rounded-full text-md px-4 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Connexion</button>
-                    <button data-collapse-toggle="navbar-sticky" type="button"
-                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        aria-controls="navbar-sticky" aria-expanded="false">
-                        <span class="sr-only">Ouvrir le menu principal</span>
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M1 1h15M1 7h15M1 13h15" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                    <ul
-                        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                        <li>
-                            <a href="./../index.html"
-                                class=" block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer"
-                                aria-current="page"><i class="fa-regular fa-building min-w-[1.3rem] md:min-w-min"></i>
-                                Accueil</a>
-                        </li>
-                        <li>
-                            <a href="#main-content"
-                                class="block py-2 px-3 text-red transition-all bg-gray-100 rounded-full cursor-pointer">
-                                <i class="fa-regular fa-comments min-w-[1.3rem] md:min-w-min"></i>
-                                Carrière</a>
-                        </li>
-                        <li>
-                            <a href="./support.html"
-                                class="block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer">
-                                <i class="fa-regular fa-life-ring min-w-[1.3rem] md:min-w-min"></i>
-                                Support</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+	<header>
+		<nav
+			class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+			<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+				<a href="#main-content" class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
+					<img src="./../public/images/mimon_logo.png" class="h-12" alt="Mimon logo">
+					<span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700">Mimon</span>
+				</a>
+				<div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+					<button type="button"
+						class="text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 focus:ring-4 focus:outline-none font-medium rounded-full text-md px-4 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+						Connexion</button>
+					<button data-collapse-toggle="navbar-sticky" type="button"
+						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+						aria-controls="navbar-sticky" aria-expanded="false">
+						<span class="sr-only">Ouvrir le menu principal</span>
+						<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 17 14">
+							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M1 1h15M1 7h15M1 13h15" />
+						</svg>
+					</button>
+				</div>
+				<div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+					<ul
+						class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+						<li>
+							<a href="./../index.html"
+								class=" block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer"
+								aria-current="page"><i class="fa-regular fa-building min-w-[1.3rem] md:min-w-min"></i>
+								Accueil</a>
+						</li>
+						<li>
+							<a href="#main-content"
+								class="block py-2 px-3 text-red transition-all bg-gray-100 rounded-full cursor-pointer">
+								<i class="fa-regular fa-comments min-w-[1.3rem] md:min-w-min"></i>
+								Carrière</a>
+						</li>
+						<li>
+							<a href="./support.html"
+								class="block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer">
+								<i class="fa-regular fa-life-ring min-w-[1.3rem] md:min-w-min"></i>
+								Support</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<section>
+			<div class="container mx-auto">
+				<div class="grid grid-cols-2 pt-40">
+					<div class="rotatating-text-container leading-none">
+						<span class="text-neutral-600 font-medium ml-5 text-2xl relative top-3 lg:top-0">Travailler avec nous
+							c'est <i class="fas fa-level-down-alt fa-sm relative"></i></span>
+						<div class="rotatating-text__list  text-6xl lg:text-7xl xl:text-8xl">
+							<div
+								class="rotatating-text__list-item rotatating-text__list-item--bg-green rotatating-text__list-item--animatate">
+								Innover</div>
+							<div class="rotatating-text__list-item rotatating-text__list-item--bg-blue">Concevoir</div>
+							<div class="rotatating-text__list-item rotatating-text__list-item--bg-red">Développer</div>
+						</div>
+						<span class="text-neutral-700 ml-3 relative -top-1 text-6xl lg:text-7xl xl:text-8xl">pour tous.</span>
+					</div>
+
+					<div class="relative -top-20">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="25.83 26.54 140.57 152.83" id="parallax-svg">
+							<clipPath id="myClip">
+								<path
+									d="M45,-73.1C57.5,-70.7,66.2,-57,66.4,-42.9C66.5,-28.9,58.1,-14.4,53.6,-2.6C49.1,9.3,48.6,18.5,47.6,31.2C46.7,43.8,45.3,59.9,37.2,69.2C29.2,78.5,14.6,81,1.5,78.4C-11.5,75.7,-23.1,67.8,-36.4,61.6C-49.7,55.4,-64.9,50.8,-70.9,40.8C-77,30.8,-74,15.4,-66.5,4.4C-58.9,-6.7,-46.8,-13.4,-39,-20.3C-31.1,-27.2,-27.6,-34.4,-21.8,-40.6C-16,-46.8,-8,-52,4.1,-59.2C16.3,-66.3,32.5,-75.4,45,-73.1Z"
+									transform="translate(100 100)"></path>
+							</clipPath>
+							<image id="parallax-image" href="./../public/images/file1.png" class="w-auto" height="180"
+								clip-path="url(#myClip)" alt="Programmeurs au bureau" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Start hero section -->
+		<section
+			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+			<div class="container mx-auto px-5 lg:px-0">
+				<div class="grid grid-cols-2">
+					<div class="col-span-2 md:col-span-1 mb-10">
+						<h1
+							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+							Des destinations
+							inspirantes
+							pour vous
+							héberger</h1>
+						<p class="text-neutral-50 my-12 mr-20">
+							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
+							voyageurs à la
+							recherche d'un
+							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+						<div class="flex">
+							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+							</a>
+							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+							</a>
+						</div>
+					</div>
 
 
-    </header>
-    <main id="main-content">
+					<!-- Mobile image gallery -->
+					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+						<!-- Carousel wrapper -->
+						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+							<!-- Item 1 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/island-destination.png"
+									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination plage de Tahiti">
+							</div>
+							<!-- Item 2 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/thailand-pool-destination.png"
+									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- Item 3 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination nord du Québec">
+							</div>
+							<!-- Item 4 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison dans le bois Caroline du Nord, USA">
+							</div>
+						</div>
+					</div>
+					<!-- End Mobile image gallery -->
 
-    </main>
-    <footer class="bg-slate-100 dark:bg-gray-900">
-        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-16">
-            <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
-                    <a href="./../index.html" class="flex items-center">
-                        <img src="./../public/images/mimon_logo.png" class="h-12 me-3" alt="Logo Mimon">
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700">Mimon</span>
-                    </a>
-                </div>
-                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Ressources</h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="./career.html"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
-                                    Carrière</a>
-                            </li>
-                            <li>
-                                <a href="./support.html"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Centre
-                                    d'aide</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Suivez-nous</h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="https://facebook.com" target="_blank" rel="noopener"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Facebook</a>
-                            </li>
-                            <li>
-                                <a href="https://x.com/?lang=fr" target="_blank" rel="noopener"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Twitter</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Légal</h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="#"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Politique
-                                    de
-                                    confidentialité</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Termes
-                                    et
-                                    conditions</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white lg:text-center">
-                            Téléchargements
-                        </h2>
-                        <ul
-                            class="text-gray-500 dark:text-gray-400 font-medium flex flex-col lg:justify-center lg:items-center">
-                            <li class="mb-4 block">
-                                <a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
-                                    class="cursor-pointer">
-                                    <img src="./../public/images/download_apple_store_dark_fr_CA.svg" class="w-[140px]"
-                                        alt="Télécharger sur l'apple store">
-                                </a>
-                            </li>
-                            <li class="mb-4 block">
-                                <a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
-                                    class="cursor-pointer">
-                                    <img src="./../public/images/download_google_store_dark_fr_CA.png"
-                                        alt="Télécharger sur le Google store" class="w-[140px]">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
-            <div class="grid grid-cols-12">
-                <span class="text-sm text-start text-gray-500 dark:text-gray-400 col-span-10">© 2024 Mimon - Tous
-                    droits
-                    réservés.
-                </span>
-                <div class="flex justify-end items-center col-span-2 mr-2 lg:mr-6">
-                    <a href="https://facebook.com" target="_blank" rel="noopener"
-                        class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 8 19">
-                            <path fill-rule="evenodd"
-                                d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <span class="sr-only">Page Facebook</span>
-                    </a>
-                    <a href="https://x.com/?lang=fr" target="_blank" rel="noopener"
-                        class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 20 17">
-                            <path fill-rule="evenodd"
-                                d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <span class="sr-only">Page Twitter</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
+					<!-- Desktop image gallery -->
+					<div class="col-span-2 md:col-span-1 hidden md:block">
+						<div class="grid grid-cols-2 gap-4">
+							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+								alt="destination plage de Tahiti">
+							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+								alt="destination maison avec piscine en Thaïlande">
+							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+								alt="destination nord du Québec">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- Start hero section -->
+		<section
+			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+			<div class="container mx-auto px-5 lg:px-0">
+				<div class="grid grid-cols-2">
+					<div class="col-span-2 md:col-span-1 mb-10">
+						<h1
+							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+							Des destinations
+							inspirantes
+							pour vous
+							héberger</h1>
+						<p class="text-neutral-50 my-12 mr-20">
+							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
+							voyageurs à la
+							recherche d'un
+							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+						<div class="flex">
+							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+							</a>
+							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+							</a>
+						</div>
+					</div>
+
+
+					<!-- Mobile image gallery -->
+					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+						<!-- Carousel wrapper -->
+						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+							<!-- Item 1 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/island-destination.png"
+									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination plage de Tahiti">
+							</div>
+							<!-- Item 2 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/thailand-pool-destination.png"
+									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- Item 3 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination nord du Québec">
+							</div>
+							<!-- Item 4 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison dans le bois Caroline du Nord, USA">
+							</div>
+						</div>
+					</div>
+					<!-- End Mobile image gallery -->
+
+					<!-- Desktop image gallery -->
+					<div class="col-span-2 md:col-span-1 hidden md:block">
+						<div class="grid grid-cols-2 gap-4">
+							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+								alt="destination plage de Tahiti">
+							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+								alt="destination maison avec piscine en Thaïlande">
+							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+								alt="destination nord du Québec">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- Start hero section -->
+		<section
+			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+			<div class="container mx-auto px-5 lg:px-0">
+				<div class="grid grid-cols-2">
+					<div class="col-span-2 md:col-span-1 mb-10">
+						<h1
+							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+							Des destinations
+							inspirantes
+							pour vous
+							héberger</h1>
+						<p class="text-neutral-50 my-12 mr-20">
+							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
+							voyageurs à la
+							recherche d'un
+							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+						<div class="flex">
+							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+							</a>
+							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+							</a>
+						</div>
+					</div>
+
+
+					<!-- Mobile image gallery -->
+					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+						<!-- Carousel wrapper -->
+						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+							<!-- Item 1 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/island-destination.png"
+									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination plage de Tahiti">
+							</div>
+							<!-- Item 2 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/thailand-pool-destination.png"
+									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- Item 3 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination nord du Québec">
+							</div>
+							<!-- Item 4 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison dans le bois Caroline du Nord, USA">
+							</div>
+						</div>
+					</div>
+					<!-- End Mobile image gallery -->
+
+					<!-- Desktop image gallery -->
+					<div class="col-span-2 md:col-span-1 hidden md:block">
+						<div class="grid grid-cols-2 gap-4">
+							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+								alt="destination plage de Tahiti">
+							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+								alt="destination maison avec piscine en Thaïlande">
+							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+								alt="destination nord du Québec">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- Start hero section -->
+		<section
+			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+			<div class="container mx-auto px-5 lg:px-0">
+				<div class="grid grid-cols-2">
+					<div class="col-span-2 md:col-span-1 mb-10">
+						<h1
+							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+							Des destinations
+							inspirantes
+							pour vous
+							héberger</h1>
+						<p class="text-neutral-50 my-12 mr-20">
+							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
+							voyageurs à la
+							recherche d'un
+							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+						<div class="flex">
+							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+							</a>
+							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+							</a>
+						</div>
+					</div>
+
+
+					<!-- Mobile image gallery -->
+					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+						<!-- Carousel wrapper -->
+						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+							<!-- Item 1 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/island-destination.png"
+									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination plage de Tahiti">
+							</div>
+							<!-- Item 2 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/thailand-pool-destination.png"
+									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- Item 3 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination nord du Québec">
+							</div>
+							<!-- Item 4 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison dans le bois Caroline du Nord, USA">
+							</div>
+						</div>
+					</div>
+					<!-- End Mobile image gallery -->
+
+					<!-- Desktop image gallery -->
+					<div class="col-span-2 md:col-span-1 hidden md:block">
+						<div class="grid grid-cols-2 gap-4">
+							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+								alt="destination plage de Tahiti">
+							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+								alt="destination maison avec piscine en Thaïlande">
+							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+								alt="destination nord du Québec">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- Start hero section -->
+		<section
+			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+			<div class="container mx-auto px-5 lg:px-0">
+				<div class="grid grid-cols-2">
+					<div class="col-span-2 md:col-span-1 mb-10">
+						<h1
+							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+							Des destinations
+							inspirantes
+							pour vous
+							héberger</h1>
+						<p class="text-neutral-50 my-12 mr-20">
+							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
+							voyageurs à la
+							recherche d'un
+							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+						<div class="flex">
+							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+							</a>
+							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+							</a>
+						</div>
+					</div>
+
+
+					<!-- Mobile image gallery -->
+					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+						<!-- Carousel wrapper -->
+						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+							<!-- Item 1 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/island-destination.png"
+									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination plage de Tahiti">
+							</div>
+							<!-- Item 2 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/thailand-pool-destination.png"
+									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- Item 3 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination nord du Québec">
+							</div>
+							<!-- Item 4 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison dans le bois Caroline du Nord, USA">
+							</div>
+						</div>
+					</div>
+					<!-- End Mobile image gallery -->
+
+					<!-- Desktop image gallery -->
+					<div class="col-span-2 md:col-span-1 hidden md:block">
+						<div class="grid grid-cols-2 gap-4">
+							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+								alt="destination plage de Tahiti">
+							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+								alt="destination maison avec piscine en Thaïlande">
+							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+								alt="destination nord du Québec">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- Start hero section -->
+		<section
+			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+			<div class="container mx-auto px-5 lg:px-0">
+				<div class="grid grid-cols-2">
+					<div class="col-span-2 md:col-span-1 mb-10">
+						<h1
+							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+							Des destinations
+							inspirantes
+							pour vous
+							héberger</h1>
+						<p class="text-neutral-50 my-12 mr-20">
+							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
+							voyageurs à la
+							recherche d'un
+							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+						<div class="flex">
+							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+							</a>
+							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+							</a>
+						</div>
+					</div>
+
+
+					<!-- Mobile image gallery -->
+					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+						<!-- Carousel wrapper -->
+						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+							<!-- Item 1 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/island-destination.png"
+									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination plage de Tahiti">
+							</div>
+							<!-- Item 2 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/thailand-pool-destination.png"
+									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- Item 3 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination nord du Québec">
+							</div>
+							<!-- Item 4 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison dans le bois Caroline du Nord, USA">
+							</div>
+						</div>
+					</div>
+					<!-- End Mobile image gallery -->
+
+					<!-- Desktop image gallery -->
+					<div class="col-span-2 md:col-span-1 hidden md:block">
+						<div class="grid grid-cols-2 gap-4">
+							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+								alt="destination plage de Tahiti">
+							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+								alt="destination maison avec piscine en Thaïlande">
+							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+								alt="destination nord du Québec">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- Start hero section -->
+		<section
+			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+			<div class="container mx-auto px-5 lg:px-0">
+				<div class="grid grid-cols-2">
+					<div class="col-span-2 md:col-span-1 mb-10">
+						<h1
+							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+							Des destinations
+							inspirantes
+							pour vous
+							héberger</h1>
+						<p class="text-neutral-50 my-12 mr-20">
+							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
+							voyageurs à la
+							recherche d'un
+							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+						<div class="flex">
+							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+							</a>
+							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+							</a>
+						</div>
+					</div>
+
+
+					<!-- Mobile image gallery -->
+					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+						<!-- Carousel wrapper -->
+						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+							<!-- Item 1 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/island-destination.png"
+									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination plage de Tahiti">
+							</div>
+							<!-- Item 2 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/thailand-pool-destination.png"
+									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- Item 3 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination nord du Québec">
+							</div>
+							<!-- Item 4 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison dans le bois Caroline du Nord, USA">
+							</div>
+						</div>
+					</div>
+					<!-- End Mobile image gallery -->
+
+					<!-- Desktop image gallery -->
+					<div class="col-span-2 md:col-span-1 hidden md:block">
+						<div class="grid grid-cols-2 gap-4">
+							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+								alt="destination plage de Tahiti">
+							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+								alt="destination maison avec piscine en Thaïlande">
+							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+								alt="destination nord du Québec">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- Start hero section -->
+		<section
+			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+			<div class="container mx-auto px-5 lg:px-0">
+				<div class="grid grid-cols-2">
+					<div class="col-span-2 md:col-span-1 mb-10">
+						<h1
+							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+							Des destinations
+							inspirantes
+							pour vous
+							héberger</h1>
+						<p class="text-neutral-50 my-12 mr-20">
+							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
+							voyageurs à la
+							recherche d'un
+							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+						<div class="flex">
+							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+							</a>
+							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+							</a>
+						</div>
+					</div>
+
+
+					<!-- Mobile image gallery -->
+					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+						<!-- Carousel wrapper -->
+						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+							<!-- Item 1 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/island-destination.png"
+									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination plage de Tahiti">
+							</div>
+							<!-- Item 2 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/thailand-pool-destination.png"
+									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- Item 3 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination nord du Québec">
+							</div>
+							<!-- Item 4 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison dans le bois Caroline du Nord, USA">
+							</div>
+						</div>
+					</div>
+					<!-- End Mobile image gallery -->
+
+					<!-- Desktop image gallery -->
+					<div class="col-span-2 md:col-span-1 hidden md:block">
+						<div class="grid grid-cols-2 gap-4">
+							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+								alt="destination plage de Tahiti">
+							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+								alt="destination maison avec piscine en Thaïlande">
+							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+								alt="destination nord du Québec">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- Start hero section -->
+		<section
+			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
+			<div class="container mx-auto px-5 lg:px-0">
+				<div class="grid grid-cols-2">
+					<div class="col-span-2 md:col-span-1 mb-10">
+						<h1
+							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
+							Des destinations
+							inspirantes
+							pour vous
+							héberger</h1>
+						<p class="text-neutral-50 my-12 mr-20">
+							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
+							voyageurs à la
+							recherche d'un
+							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+						<div class="flex">
+							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+							</a>
+							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+								class="cursor-pointer">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+							</a>
+						</div>
+					</div>
+
+
+					<!-- Mobile image gallery -->
+					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
+						<!-- Carousel wrapper -->
+						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
+							<!-- Item 1 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/island-destination.png"
+									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination plage de Tahiti">
+							</div>
+							<!-- Item 2 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/thailand-pool-destination.png"
+									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- Item 3 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination nord du Québec">
+							</div>
+							<!-- Item 4 -->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="destination maison dans le bois Caroline du Nord, USA">
+							</div>
+						</div>
+					</div>
+					<!-- End Mobile image gallery -->
+
+					<!-- Desktop image gallery -->
+					<div class="col-span-2 md:col-span-1 hidden md:block">
+						<div class="grid grid-cols-2 gap-4">
+							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
+								alt="destination plage de Tahiti">
+							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
+								alt="destination maison avec piscine en Thaïlande">
+							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
+								alt="destination nord du Québec">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="bg-slate-100 dark:bg-gray-900 hidden">
+		<div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-16">
+			<div class="md:flex md:justify-between">
+				<div class="mb-6 md:mb-0">
+					<a href="./../index.html" class="flex items-center">
+						<img src="./../public/images/mimon_logo.png" class="h-12 me-3" alt="Logo Mimon">
+						<span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700">Mimon</span>
+					</a>
+				</div>
+				<div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
+					<div>
+						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Ressources</h2>
+						<ul class="text-gray-500 dark:text-gray-400 font-medium">
+							<li class="mb-4">
+								<a href="./career.html"
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Carrière</a>
+							</li>
+							<li>
+								<a href="./support.html"
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Centre
+									d'aide</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Suivez-nous</h2>
+						<ul class="text-gray-500 dark:text-gray-400 font-medium">
+							<li class="mb-4">
+								<a href="https://facebook.com" target="_blank" rel="noopener"
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Facebook</a>
+							</li>
+							<li>
+								<a href="https://x.com/?lang=fr" target="_blank" rel="noopener"
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Twitter</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Légal</h2>
+						<ul class="text-gray-500 dark:text-gray-400 font-medium">
+							<li class="mb-4">
+								<a href="#"
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Politique
+									de
+									confidentialité</a>
+							</li>
+							<li>
+								<a href="#"
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Termes
+									et
+									conditions</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white lg:text-center">
+							Téléchargements
+						</h2>
+						<ul
+							class="text-gray-500 dark:text-gray-400 font-medium flex flex-col lg:justify-center lg:items-center">
+							<li class="mb-4 block">
+								<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
+									class="cursor-pointer">
+									<img src="./../public/images/download_apple_store_dark_fr_CA.svg" class="w-[140px]"
+										alt="Télécharger sur l'apple store">
+								</a>
+							</li>
+							<li class="mb-4 block">
+								<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
+									class="cursor-pointer">
+									<img src="./../public/images/download_google_store_dark_fr_CA.png"
+										alt="Télécharger sur le Google store" class="w-[140px]">
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+			<div class="grid grid-cols-12">
+				<span class="text-sm text-start text-gray-500 dark:text-gray-400 col-span-10">© 2024 Mimon - Tous
+					droits
+					réservés.
+				</span>
+				<div class="flex justify-end items-center col-span-2 mr-2 lg:mr-6">
+					<a href="https://facebook.com" target="_blank" rel="noopener"
+						class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+						<svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+							viewBox="0 0 8 19">
+							<path fill-rule="evenodd"
+								d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+								clip-rule="evenodd" />
+						</svg>
+						<span class="sr-only">Page Facebook</span>
+					</a>
+					<a href="https://x.com/?lang=fr" target="_blank" rel="noopener"
+						class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+						<svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+							viewBox="0 0 20 17">
+							<path fill-rule="evenodd"
+								d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+								clip-rule="evenodd" />
+						</svg>
+						<span class="sr-only">Page Twitter</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script>
+		document.addEventListener('scroll', function () {
+			const scrollPosition = window.scrollY;
+			const image = document.getElementById('parallax-image');
+
+			// Adjust this value for parallax speed (lower value = slower movement)
+			const parallaxFactor = 0.1;
+
+			// const interval = setInterval(() => {
+			image.setAttribute('y', scrollPosition * parallaxFactor);
+		});
+	</script>
 </body>
 
 </html>

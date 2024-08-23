@@ -10022,6 +10022,19 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
 
+/***/ }),
+
+/***/ "./src/styles/scss/pages/career.scss":
+/*!*******************************************!*\
+  !*** ./src/styles/scss/pages/career.scss ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
 /***/ })
 
 /******/ 	});
@@ -10135,6 +10148,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/public/js/main": 0,
+/******/ 			"public/css/pages/career": 0,
 /******/ 			"public/css/styles": 0
 /******/ 		};
 /******/ 		
@@ -10185,8 +10199,9 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["public/css/styles"], () => (__webpack_require__("./src/js/main.ts")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["public/css/styles"], () => (__webpack_require__("./src/styles/scss/styles.scss")))
+/******/ 	__webpack_require__.O(undefined, ["public/css/pages/career","public/css/styles"], () => (__webpack_require__("./src/js/main.ts")))
+/******/ 	__webpack_require__.O(undefined, ["public/css/pages/career","public/css/styles"], () => (__webpack_require__("./src/styles/scss/styles.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["public/css/pages/career","public/css/styles"], () => (__webpack_require__("./src/styles/scss/pages/career.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
