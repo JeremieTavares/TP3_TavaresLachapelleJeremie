@@ -37,7 +37,8 @@ export default {
         }
       },
       backgroundImage: {
-        'island-darken-blur': "url('/images/island-darken-blur.png')", // it's a relative path to the public folder
+        'island-darken-blur': "url('/images/island-darken-blur-low-size.jpg')", // it's a relative path to the public folder
+        'dev-working-in-office': "url('/images/dev-working-in-office.jpg')", // it's a relative path to the public folder
       },
     },
   },

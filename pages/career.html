@@ -43,7 +43,7 @@
 		<nav
 			class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
 			<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-				<a href="#main-content" class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
+				<a href="./../index.html" class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
 					<img src="./../public/images/mimon_logo.png" class="h-12" alt="Mimon logo">
 					<span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700">Mimon</span>
 				</a>
@@ -91,35 +91,158 @@
 
 	<main id="main-content">
 		<section>
-			<div class="container mx-auto">
-				<div class="grid grid-cols-2 pt-40">
-					<div class="rotatating-text-container leading-none">
-						<span class="text-neutral-600 font-medium ml-5 text-2xl relative top-3 lg:top-0">Travailler avec nous
-							c'est <i class="fas fa-level-down-alt fa-sm relative"></i></span>
-						<div class="rotatating-text__list  text-6xl lg:text-7xl xl:text-8xl">
-							<div
-								class="rotatating-text__list-item rotatating-text__list-item--bg-green rotatating-text__list-item--animatate">
-								Innover</div>
-							<div class="rotatating-text__list-item rotatating-text__list-item--bg-blue">Concevoir</div>
-							<div class="rotatating-text__list-item rotatating-text__list-item--bg-red">Développer</div>
+			<div class="container mx-auto min-h-dvh">
+				<div class="grid grid-cols-1 md:grid-cols-2 pt-28 md:pt-36 pb-16 mx-5">
+					<div>
+						<div class="rotatating-text-container leading-none">
+							<span class="text-neutral-600 font-light text-2xl relative top-3 lg:top-0">Travailler avec
+								nous
+								c'est <i class="fas fa-level-down-alt fa-xs relative top-1"></i></span>
+							<div class="rotatating-text__list  text-6xl lg:text-7xl xl:text-8xl relative">
+								<div
+									class="rotatating-text__list-item rotatating-text__list-item--bg-green rotatating-text__list-item--animatate">
+									Innover</div>
+								<div class="rotatating-text__list-item rotatating-text__list-item--bg-blue">Designer
+								</div>
+								<div class="rotatating-text__list-item rotatating-text__list-item--bg-red">Développer
+								</div>
+							</div>
+							<span class="text-neutral-700 relative -top-1 text-6xl lg:text-7xl xl:text-8xl">pour
+								tous.</span>
 						</div>
-						<span class="text-neutral-700 ml-3 relative -top-1 text-6xl lg:text-7xl xl:text-8xl">pour tous.</span>
-					</div>
 
-					<div class="relative -top-20">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="25.83 26.54 140.57 152.83" id="parallax-svg">
+
+						<!-- Image separator -->
+						<div class="bg-right h-48 w-full bg-no-repeat bg-cover block md:hidden rounded-3xl mt-10"
+							style="background-image: url(./../public/images/dev-working-in-office.jpg);">
+						</div>
+
+						<div class="space-y-8 mt-12 md:mr-20 font-light text-gray-700 text-[17px]">
+							<p>
+								Mimon, est une plateforme qui redéfinit le standard pour l'hébergement
+								des voyageurs en connectent les propriétaires de logements avec des
+								voyageurs à la recherche d'un hébergement de courte durée ou de longue durée dans le
+								monde
+								entier.
+							</p>
+							<p>
+								Nous recherchons des personnes qui partagent une passion commune pour l'innovation et
+								l'excellence. Plusieurs opportunités d'emploi à Paris, Lisbonne, Sherbrooke et Montréal,
+								ainsi
+								qu'en télétravail à travers le monde.
+							</p>
+							<p>
+								Postulez dès maintenant et faites partie de notre équipe !
+							</p>
+						</div>
+						<button
+							class="text-[17px] font-light hover:text-white border text-red border-red transition-all hover:scale-[.99] hover:bg-rose-600 mt-12 md:mt-20 py-3 px-4 rounded-full md:w-auto text-center">
+							Voir les offres d'emploi
+						</button>
+					</div>
+					<div class="relative -top-4 hidden md:block">
+						<svg xmlns=" http://www.w3.org/2000/svg" viewBox="25.83 26.54 140.57 152.83" id="parallax-svg">
 							<clipPath id="myClip">
 								<path
 									d="M45,-73.1C57.5,-70.7,66.2,-57,66.4,-42.9C66.5,-28.9,58.1,-14.4,53.6,-2.6C49.1,9.3,48.6,18.5,47.6,31.2C46.7,43.8,45.3,59.9,37.2,69.2C29.2,78.5,14.6,81,1.5,78.4C-11.5,75.7,-23.1,67.8,-36.4,61.6C-49.7,55.4,-64.9,50.8,-70.9,40.8C-77,30.8,-74,15.4,-66.5,4.4C-58.9,-6.7,-46.8,-13.4,-39,-20.3C-31.1,-27.2,-27.6,-34.4,-21.8,-40.6C-16,-46.8,-8,-52,4.1,-59.2C16.3,-66.3,32.5,-75.4,45,-73.1Z"
 									transform="translate(100 100)"></path>
 							</clipPath>
-							<image id="parallax-image" href="./../public/images/file1.png" class="w-auto" height="180"
-								clip-path="url(#myClip)" alt="Programmeurs au bureau" />
+							<image id="parallax-image" href="./../public/images/dev-working-in-office.jpg"
+								class="w-auto" height="180" clip-path="url(#myClip)" alt="Programmeurs au bureau" />
 						</svg>
 					</div>
 				</div>
 			</div>
 		</section>
+
+		<section>
+			<div class="bg-gray-100 pt-16 pb-20 md:py-28 px-8 flex flex-col items-center justify-center">
+				<h2 class="text-gray-500 text-xl font-light tracking-wide mb-8 text-center">
+					DES COMPÉTENCES QUI TRANSFORME L'AVENIR
+				</h2>
+
+				<!-- Search Bar -->
+				<div class="relative mb-12 w-full max-w-2xl">
+					<input type="text"
+						class="w-full py-4 pl-6 pr-14 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-red focus:border-neutral-50"
+						placeholder="Rechercher par titre de poste/code de référence">
+					<button
+						class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-gray-500 p-2 rounded-full">
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+
+				<!-- Infinite marquee scroll -->
+				<div class="wrapper">
+					<div class="marquee">
+						<div
+							class="marquee__group text-gray-700 text-2xl lg:text-4xl font-semibold flex flex-wrap justify-center items-center space-y-6">
+							<span class="mt-6">Machine Learning • </span>
+							<span>Développement Web • </span>
+							<span>Analyse de Données •</span>
+							<span>Expérience Utilisateur (UX) • </span>
+							<span>Intelligence Artificielle (IA) • </span>
+							<span>Marketing Digital • </span>
+							<span>Designers Graphiques (UI) •</span>
+							<span>Sécurité & Conformité • </span>
+							<span>Développement Mobile •</span>
+						</div>
+
+						<div aria-hidden="true"
+							class="marquee__group text-gray-700 text-2xl lg:text-4xl font-semibold flex flex-wrap justify-center items-center space-y-6">
+							<span class="mt-6">Machine Learning • </span>
+							<span>Développement Web • </span>
+							<span>Expérience Utilisateur(UX) • </span>
+							<span>Designers Graphiques(UI) • </span>
+							<span>Support Client • </span>
+							<span>Marketing Digital • </span>
+							<span>Analyse de Données • </span>
+							<span>Sécurité & Conformité • </span>
+							<span>Développement Mobile • </span>
+						</div>
+					</div>
+
+					<div class="marquee marquee--reverse">
+						<div
+							class="marquee__group text-gray-700 text-2xl lg:text-4xl font-semibold flex flex-wrap justify-center items-center space-y-6">
+							<span class="mt-6">Réseaux et Infrastructures • </span>
+							<span>Marketing Digital • </span>
+							<span>Support Client • </span>
+							<span>Expérience Utilisateur (UX) • </span>
+							<span>Développement Mobile • </span>
+							<span>Développement Web • </span>
+							<span>Analyse de Données • </span>
+							<span>Gestion de Communauté • </span>
+							<span>Designers Graphiques (UI) • </span>
+						</div>
+
+						<div aria-hidden="true"
+							class="marquee__group text-gray-700 text-2xl lg:text-4xl font-semibold flex flex-wrap justify-center items-center space-y-6">
+							<span class="mt-6">Réseaux et Infrastructures • </span>
+							<span>Marketing Digital • </span>
+							<span>Support Client • </span>
+							<span>Expérience Utilisateur (UX) • </span>
+							<span>Développement Mobile • </span>
+							<span>Analyse de Données • </span>
+							<span>Développement Web • </span>
+							<span>Gestion de Communauté • </span>
+							<span>Designers Graphiques (UI) • </span>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- See All Jobs Button -->
+				<div class="mt-20">
+					<a href="#"
+						class="text-[17px] font-light border text-black border-black hover:bg-black hover:text-white hover:cursor-pointer py-3 pl-4 pr-3 rounded-full transition-all hover:scale-[.99]">
+						Voir les postes disponibles <i class="fa-solid fa-plus fa-xs"></i>
+					</a>
+				</div>
+			</div>
+		</section>
+
+
 		<!-- Start hero section -->
 		<section
 			class="hero-section py-10 md:py-20 h-full xl:h-[880px] bg-fixed bg-right bg-no-repeat bg-cover bg-island-darken-blur">
