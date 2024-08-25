@@ -21,3 +21,6 @@ Thumbs.db
 # Ignore dependencies and package managers
 /node_modules/
 /vendor/
+
+# Ignore backup files
+/bkp/

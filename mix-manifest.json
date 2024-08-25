@@ -1,6 +1,6 @@
 {
     "/public/js/main.js": "/public/js/main.js",
-    "/public/js/pages/job-form.js": "/public/js/pages/job-form.js",
-    "/public/css/pages/career.css": "/public/css/pages/career.css",
+    "/public/js/views/job-form.js": "/public/js/views/job-form.js",
+    "/public/css/views/career.css": "/public/css/views/career.css",
     "/public/css/styles.css": "/public/css/styles.css"
 }

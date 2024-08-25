@@ -1,9 +1,9 @@
 const mix = require('laravel-mix');
-mix.ts('./src/js/main.ts', './public/js/main.js')
-    .ts('./src/js/pages/job-form.ts', './public/js/pages/job-form.js')
-    .sass('./src/styles/scss/styles.scss', './public/css/styles.css')
-    .sass('./src/styles/scss/pages/career.scss', './public/css/pages/career.css');
-// .postCss('./src/styles/styles.css', './public/css/styles.css', [
+mix.ts('./resources/js/main.ts', './public/js/main.js')
+    .ts('./resources/js/views/job-form.ts', './public/js/views/job-form.js')
+    .sass('./resources/scss/styles.scss', './public/css/styles.css')
+    .sass('./resources/scss/views/career.scss', './public/css/views/career.css');
+// .postCss('./resources/scss/styles.css', './public/css/styles.css', [
 //     require('tailwindcss'),
 //     require('autoprefixer')
 // ])

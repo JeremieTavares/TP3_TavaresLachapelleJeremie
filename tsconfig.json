@@ -8,5 +8,5 @@
 		"strict": true,
 		"esModuleInterop": true
 	},
-	"include": ["./src/js/main.ts"]
+	"include": ["resources/js/main.ts"]
 }

@@ -2946,15 +2946,15 @@ function withinMaxClamp(min, value, max) {
 
 /***/ }),
 
-/***/ "./src/js/main.ts":
-/*!************************!*\
-  !*** ./src/js/main.ts ***!
-  \************************/
+/***/ "./resources/js/main.ts":
+/*!******************************!*\
+  !*** ./resources/js/main.ts ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/functions */ "./src/js/utils/functions.ts");
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/functions */ "./resources/js/utils/functions.ts");
 /* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flowbite */ "./node_modules/flowbite/lib/esm/index.js");
 
 
@@ -2963,10 +2963,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/js/utils/functions.ts":
-/*!***********************************!*\
-  !*** ./src/js/utils/functions.ts ***!
-  \***********************************/
+/***/ "./resources/js/utils/functions.ts":
+/*!*****************************************!*\
+  !*** ./resources/js/utils/functions.ts ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10011,10 +10011,10 @@ events.init();
 
 /***/ }),
 
-/***/ "./src/styles/scss/styles.scss":
-/*!*************************************!*\
-  !*** ./src/styles/scss/styles.scss ***!
-  \*************************************/
+/***/ "./resources/scss/styles.scss":
+/*!************************************!*\
+  !*** ./resources/scss/styles.scss ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10024,10 +10024,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/styles/scss/pages/career.scss":
-/*!*******************************************!*\
-  !*** ./src/styles/scss/pages/career.scss ***!
-  \*******************************************/
+/***/ "./resources/scss/views/career.scss":
+/*!******************************************!*\
+  !*** ./resources/scss/views/career.scss ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10148,7 +10148,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/public/js/main": 0,
-/******/ 			"public/css/pages/career": 0,
+/******/ 			"public/css/views/career": 0,
 /******/ 			"public/css/styles": 0
 /******/ 		};
 /******/ 		
@@ -10199,9 +10199,9 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["public/css/pages/career","public/css/styles"], () => (__webpack_require__("./src/js/main.ts")))
-/******/ 	__webpack_require__.O(undefined, ["public/css/pages/career","public/css/styles"], () => (__webpack_require__("./src/styles/scss/styles.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["public/css/pages/career","public/css/styles"], () => (__webpack_require__("./src/styles/scss/pages/career.scss")))
+/******/ 	__webpack_require__.O(undefined, ["public/css/views/career","public/css/styles"], () => (__webpack_require__("./resources/js/main.ts")))
+/******/ 	__webpack_require__.O(undefined, ["public/css/views/career","public/css/styles"], () => (__webpack_require__("./resources/scss/styles.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["public/css/views/career","public/css/styles"], () => (__webpack_require__("./resources/scss/views/career.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

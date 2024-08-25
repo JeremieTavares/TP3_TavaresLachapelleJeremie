@@ -5,8 +5,8 @@ const colors = require('tailwindcss/colors')
 export default {
   content: [
     './index.html',
-    './pages/*.html',
-    './src/**/*.{js,ts,jsx,tsx,css,scss}',
+    './resources/views/**/*.html',
+    './resources/**/*.{js,ts,jsx,tsx,css,scss}',
     './public/css/styles.css',
     "./node_modules/tw-elements/js/**/*.js",
   ],
