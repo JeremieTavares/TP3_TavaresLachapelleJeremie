@@ -11,11 +11,28 @@ import { CheckedValidator } from "../validation/classes/CheckedValidator";
 import RegexValidator from "../validation/classes/RegexValidator";
 import NameRegExp from "../validation/classes/regex/NameRegExp";
 import LetterRegExp from "../validation/classes/regex/LetterRegExp";
+import FileDropzone from "../components/FileDropzone";
 
 document.addEventListener("DOMContentLoaded", function () {
 	document?.getElementById("applyButton")?.addEventListener("click", function () {
 		document?.getElementById("applyForm")?.classList.toggle("hidden");
 	});
+
+	try {
+		new FileDropzone({
+			dropzoneId: "resumeUploadDropzone",
+			inputId: "resume",
+			filenameId: "resumeFilename",
+		});
+
+		new FileDropzone({
+			dropzoneId: "motivationLetterUploadDropzone",
+			inputId: "motivationLetter",
+			filenameId: "motivationLetterFilename",
+		});
+	} catch (error) {
+		console.error(error);
+	}
 });
 
 const form = new Form("#jobApplicationForm");
