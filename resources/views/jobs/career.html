@@ -17,22 +17,39 @@
 	<meta name="msapplication-navbutton-color" content="#ffffff">
 
 	<!-- Favicons -->
-	<link rel="icon" href="./../../../public/images/mimon_logo.png" sizes="32x32">
-	<link rel="icon" href="./../../../public/images/mimon_logo.png" sizes="192x192">
-	<link rel="apple-touch-icon" href="./public/images/mimon_logo.png">
+	<link rel="apple-touch-icon" sizes="512x512" href="./../../../public/icons/maskable_icon_x512.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="./../../../public/icons/maskable_icon_x512.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./../../../public/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./../../../public/icons/favicon-16x16.png">
 
 	<!-- Custom styles - Used to load tailwind css and utilities classes -->
 	<link rel="stylesheet" href="./../../../public/css/styles.css">
 	<link rel="stylesheet" href="./../../../public/css/views/career.css">
 
 	<!-- CDN styles -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./../../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
 
 	<!-- CDN scripts -->
-	<script src="https://kit.fontawesome.com/475ed1ea72.js" crossorigin="anonymous"></script>
+	<script src="./../../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 
 	<!-- Custom scripts -->
 	<script defer src="./../../../public/js/main.js"></script>
+	<script defer src="./../../../public/js/views/career.js"></script>
+
+	<!-- PWA -->
+	<link rel="manifest" href="./../../../manifest.json">
+	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('./../../../service-worker.js')
+					.then((registration) => {
+						console.log('[ServiceWorker] registered with scope:', registration.scope);
+					}).catch((err) => {
+						console.log('[ServiceWorker] registration failed:', err);
+					});
+			});
+		}
+	</script>
 </head>
 
 <body class="relative bg-white">
@@ -40,19 +57,31 @@
 	<a href="#main-content" class="skip-to-main-link">Aller au contenu principal</a>
 
 	<header>
+		<!-- Start main navbar -->
 		<nav
 			class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
 			<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 				<a href="./../../../index.html" class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
 					<img src="./../../../public/images/mimon_logo.png" class="h-12" alt="Mimon logo">
-					<span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700">Mimon</span>
+					<span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700 hidden md:inline">
+						Mimon
+					</span>
 				</a>
-				<div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+				<div class="flex md:order-2 space-x-3 rtl:space-x-reverse">
+					<!-- Install PWA Button -->
+					<button id="installPWAButton"
+						class="text-[17px] font-light border text-black border-black hover:bg-black hover:text-white hover:cursor-pointer py-2 pl-3 pr-3 rounded-full transition-all hover:scale-[.99]">
+						<i class="fa-solid fa-circle-down"></i>
+						Installer
+					</button>
+					<!-- Login Button -->
 					<button type="button"
-						class="text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 focus:ring-4 focus:outline-none font-medium rounded-full text-md px-4 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-						Connexion</button>
+						class="text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 focus:ring-4 focus:outline-none font-medium rounded-full text-md px-4 py-3 text-center">
+						Connexion
+					</button>
+					<!-- Mobile menu Button -->
 					<button data-collapse-toggle="navbar-sticky" type="button"
-						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
 						aria-controls="navbar-sticky" aria-expanded="false">
 						<span class="sr-only">Ouvrir le menu principal</span>
 						<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -68,78 +97,89 @@
 						<li>
 							<a href="./../../../index.html"
 								class=" block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer"
-								aria-current="page"><i class="fa-regular fa-building min-w-[1.3rem] md:min-w-min"></i>
-								Accueil</a>
+								aria-current="page">
+								<i class="fa-solid fa-house min-w-[1.3rem] md:min-w-min"></i>
+								Accueil
+							</a>
 						</li>
 						<li>
 							<a href="#main-content"
 								class="block py-2 px-3 text-red transition-all bg-gray-100 rounded-full cursor-pointer">
-								<i class="fa-regular fa-comments min-w-[1.3rem] md:min-w-min"></i>
-								Carrière</a>
+								<i class="fa-solid fa-laptop-code min-w-[1.3rem] md:min-w-min"></i>
+								Carrière
+							</a>
 						</li>
 						<li>
 							<a href="./../support.html"
 								class="block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer">
-								<i class="fa-regular fa-life-ring min-w-[1.3rem] md:min-w-min"></i>
-								Support</a>
+								<i class="fa-solid fa-life-ring min-w-[1.3rem] md:min-w-min"></i>
+								Support
+							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
+		<!-- End main navbar -->
 	</header>
 
 	<main id="main-content">
+
+		<!-- Start hero section -->
 		<section>
 			<div class="container mx-auto min-h-dvh">
 				<div class="grid grid-cols-1 md:grid-cols-2 pt-28 md:pt-36 pb-16 mx-5">
 					<div>
+						<!-- Rotating text -->
 						<div class="rotatating-text-container leading-none">
-							<h1 class="text-neutral-600 font-light text-2xl relative top-3 lg:top-0">Travailler avec
-								nous
-								c'est <i class="fas fa-level-down-alt fa-xs relative top-1"></i></h1>
+							<h1 class="text-neutral-600 font-light text-2xl relative top-3 lg:top-0">
+								Travailler avec nous c'est
+								<i class="fas fa-level-down-alt fa-xs relative top-1"></i>
+							</h1>
 							<div class="rotatating-text__list  text-6xl lg:text-7xl xl:text-8xl relative">
 								<div
 									class="rotatating-text__list-item rotatating-text__list-item--bg-green rotatating-text__list-item--animatate">
-									Innover</div>
-								<div class="rotatating-text__list-item rotatating-text__list-item--bg-blue">Designer
+									Innover
 								</div>
-								<div class="rotatating-text__list-item rotatating-text__list-item--bg-red">Développer
+								<div class="rotatating-text__list-item rotatating-text__list-item--bg-blue">
+									Designer
+								</div>
+								<div class="rotatating-text__list-item rotatating-text__list-item--bg-red">
+									Développer
 								</div>
 							</div>
-							<span class="text-neutral-700 relative -top-1 text-6xl lg:text-7xl xl:text-8xl">pour
-								tous.</span>
+							<span class="text-neutral-700 relative -top-1 text-6xl lg:text-7xl xl:text-8xl">
+								pour tous.
+							</span>
 						</div>
 
-
-						<!-- Image separator -->
+						<!-- Image separator - Shown on mobile - hidden >= Tablet-->
 						<div class="bg-right h-48 w-full bg-no-repeat bg-cover block md:hidden rounded-3xl mt-10"
 							style="background-image: url(./../../../public/images/dev-working-in-office.jpg);">
 						</div>
 
 						<div class="space-y-8 mt-12 md:mr-20 font-light text-gray-700 text-[17px]">
 							<p>
-								Mimon, est une plateforme qui redéfinit le standard pour l'hébergement
-								des voyageurs en connectent les propriétaires de logements avec des
-								voyageurs à la recherche d'un hébergement de courte durée ou de longue durée dans le
-								monde
-								entier.
+								Mimon, est une plateforme qui redéfinit le standard pour l'hébergement des voyageurs en
+								connectent les propriétaires de logements avec des voyageurs à la recherche d'un
+								hébergement de courte durée ou de longue durée dans le monde entier.
 							</p>
 							<p>
 								Nous recherchons des personnes qui partagent une passion commune pour l'innovation et
 								l'excellence. Plusieurs opportunités d'emploi à Paris, Lisbonne, Sherbrooke et Montréal,
-								ainsi
-								qu'en télétravail à travers le monde.
+								ainsi qu'en télétravail à travers le monde.
 							</p>
 							<p>
 								Postulez dès maintenant et faites partie de notre équipe !
 							</p>
 						</div>
-						<button
-							class="text-[17px] font-light hover:text-white border text-red border-red transition-all hover:scale-[.99] hover:bg-rose-600 mt-12 md:mt-20 py-3 px-4 rounded-full md:w-auto text-center">
+						<a href="#sectionAvailableOpenings"
+							class="inline-block text-[17px] font-light hover:text-white border text-red border-red transition-all hover:scale-[.99] hover:bg-rose-600 mt-12 md:mt-20 py-3 px-4 rounded-full md:w-auto text-center">
 							Voir les offres d'emploi
-						</button>
+						</a>
 					</div>
+
+					<!-- Blob style image - Parallax handled by JS (IOS issues) -->
 					<div class="relative -top-4 hidden md:block">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="25.83 26.54 140.57 152.83" id="parallax-svg">
 							<clipPath id="myClip">
@@ -154,7 +194,10 @@
 				</div>
 			</div>
 		</section>
+		<!-- End hero section -->
 
+
+		<!-- Start skills section -->
 		<section>
 			<div class="bg-gray-100 pt-16 pb-20 md:py-28 px-8 flex flex-col items-center justify-center">
 				<h2 class="text-3xl font-light text-center text-gray-500 mb-16">
@@ -163,7 +206,7 @@
 
 				<!-- Search Bar -->
 				<div class="relative mb-12 w-full max-w-2xl">
-					<input type="text"
+					<input type="search"
 						class="font-light w-full py-4 pl-6 pr-14 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-red focus:border-neutral-50"
 						placeholder="Rechercher par titre de poste/code de référence">
 					<button
@@ -173,7 +216,7 @@
 				</div>
 
 				<!-- Infinite marquee scroll -->
-				<div class="wrapper">
+				<div class="wrapper relative">
 					<div class="marquee">
 						<div
 							class="marquee__group text-gray-700 text-2xl lg:text-4xl font-semibold flex flex-wrap justify-center items-center space-y-6">
@@ -230,7 +273,7 @@
 						</div>
 					</div>
 				</div>
-
+				<!-- End infinite marquee scroll -->
 
 				<!-- See All Jobs Button -->
 				<div class="mt-20">
@@ -241,251 +284,333 @@
 				</div>
 			</div>
 		</section>
+		<!-- End skills section -->
 
+		<!-- Start Why Work With Us Section -->
 		<section class="py-16 bg-gray-900">
-			<div class="max-w-7xl mx-auto px-6">
+			<div class="container max-w-7xl mx-auto px-6">
 				<h2 class="text-3xl font-light text-center text-gray-300 mb-12">Pourquoi travailler avec nous?</h2>
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<div
+					<!-- Benefit 1 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-yellow-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Bien-être</div>
+							Bien-être
+						</div>
 						<h3 class="text-xl font-semibold text-gray-300 mb-4">Chaises Harman Miller</h3>
-						<p class="text-gray-400 font-light">Choisissez la chaise qui vous convient (Embody ou Aeron).
-							Pour le
-							télétravail, nous vous l'envoyons directement chez vous.</p>
-					</div>
-					<div
+						<p class="text-gray-400 font-light">
+							Choisissez la chaise qui vous convient (Embody ou Aeron).
+							Pour le télétravail, nous vous l'envoyons directement chez vous.
+						</p>
+					</article>
+
+					<!-- Benefit 2 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-blue-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Technologie</div>
-						<h3 class="text-xl font-semibold text-gray-300 mb-4">MacBook Pro 16 pouces</h3>
-						<p class="text-gray-400 font-light">Tous nos salariés reçoivent les MacBooks de dernière
-							génération,
-							parfaits pour travailler efficacement.</p>
-					</div>
-					<div
+							Technologie
+						</div>
+						<h3 class="text-xl font-semibold text-gray-300 mb-4">MacBook Pro</h3>
+						<p class="text-gray-400 font-light">
+							Tous nos salariés reçoivent les MacBooks de dernière génération, parfaits pour travailler
+							efficacement.
+						</p>
+					</article>
+
+					<!-- Benefit 3 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-green-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Financier</div>
-						<h3 class="text-xl font-semibold text-gray-300 mb-4">Salaire de départ à 6 chiffres</h3>
-						<p class="text-gray-400 font-light">Nous offrons un salaire compétitif, débutant dans les six
-							chiffres,
-							pour tous nos employés.</p>
-					</div>
-					<div
+							Financier
+						</div>
+						<h3 class="text-xl font-semibold text-gray-300 mb-4">Salaire compétitif</h3>
+						<p class="text-gray-400 font-light">
+							Nous offrons un salaire compétitif, débutant dans les six chiffres, pour tous nos employés.
+						</p>
+					</article>
+
+					<!-- Benefit 4 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-yellow-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Bien-être</div>
+							Bien-être
+						</div>
 						<h3 class="text-xl font-semibold text-gray-300 mb-4">Télétravail flexible</h3>
-						<p class="text-gray-400 font-light">Vous avez la possibilité de travailler de chez vous ou de
-							profiter de
-							nos bureaux modernes.</p>
-					</div>
-					<div
+						<p class="text-gray-400 font-light">
+							Vous avez la possibilité de travailler de chez vous ou de profiter de nos bureaux modernes.
+						</p>
+					</article>
+
+					<!-- Benefit 5 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-blue-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Technologie</div>
-						<h3 class="text-xl font-semibold text-gray-300 mb-4">Dernières tendances technologiques</h3>
-						<p class="text-gray-400 font-light">Nous utilisons les dernières technologies et les versions
-							les plus
-							récentes de chaque langage.</p>
-					</div>
-					<div
+							Technologie
+						</div>
+						<h3 class="text-xl font-semibold text-gray-300 mb-4">Technologies</h3>
+						<p class="text-gray-400 font-light">
+							Nous utilisons les dernières technologies et les versions les plus récentes de chaque
+							langage.
+						</p>
+					</article>
+
+					<!-- Benefit 6 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-purple-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Avantages sociaux</div>
+							Sociaux
+						</div>
 						<h3 class="text-xl font-semibold text-gray-300 mb-4">Formation continue</h3>
-						<p class="text-gray-400 font-light">Développez vos compétences avec nos nombreuses opportunités
-							de
-							formation continue.</p>
-					</div>
-					<div
+						<p class="text-gray-400 font-light">
+							Développez vos compétences avec nos nombreuses opportunités de formation continue.
+						</p>
+					</article>
+
+					<!-- Benefit 7 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-green-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Financier</div>
+							Financier
+						</div>
 						<h3 class="text-xl font-semibold text-gray-300 mb-4">Fonds de retraite</h3>
-						<p class="text-gray-400 font-light">Nous proposons un fonds de retraite pour assurer votre
-							avenir.</p>
-					</div>
-					<div
+						<p class="text-gray-400 font-light">
+							Nous proposons un fonds de retraite pour assurer votre avenir.
+						</p>
+					</article>
+
+					<!-- Benefit 8 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-red-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Santé</div>
+							Santé
+						</div>
 						<h3 class="text-xl font-semibold text-gray-300 mb-4">Télémédecine</h3>
-						<p class="text-gray-400 font-light">Accédez facilement à des soins de santé via notre service de
-							télémédecine.</p>
-					</div>
-					<div
+						<p class="text-gray-400 font-light">
+							Accédez facilement à des soins de santé via notre service de télémédecine.
+						</p>
+					</article>
+
+					<!-- Benefit 9 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-purple-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Avantages sociaux</div>
+							Sociaux
+						</div>
 						<h3 class="text-xl font-semibold text-gray-300 mb-4">Cafétéria sur place</h3>
-						<p class="text-gray-400 font-light">Pour ceux qui travaillent au bureau, nous offrons un
-							déjeuner avec
-							trois repas au choix, tous sans allergènes.</p>
-					</div>
-					<div
+						<p class="text-gray-400 font-light">
+							Pour ceux qui travaillent au bureau, nous offrons un déjeuner avec trois repas au choix,
+							tous sans allergènes.
+						</p>
+					</article>
+
+					<!-- Benefit 10 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-red-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Santé</div>
+							Santé
+						</div>
 						<h3 class="text-xl font-semibold text-gray-300 mb-4">Assurances complètes</h3>
-						<p class="text-gray-400 font-light">Profitez de nos assurances complètes pour vous et votre
-							famille.</p>
-					</div>
-					<div
+						<p class="text-gray-400 font-light">
+							Profitez de nos assurances complètes pour vous et votre famille.
+						</p>
+					</article>
+
+					<!-- Benefit 11 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-purple-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Avantages sociaux</div>
+							Sociaux</div>
 						<h3 class="text-xl font-semibold text-gray-300 mb-4">Vacances et congés</h3>
-						<p class="text-gray-400 font-light">Commencez avec 5 semaines de vacances, pouvant aller jusqu'à
-							10
-							semaines, et bénéficiez d'un congé parental de 1 an.</p>
-					</div>
-					<div
+						<p class="text-gray-400 font-light">
+							Commencez avec 5 semaines de vacances, pouvant aller jusqu'à 10 semaines,
+							et bénéficiez d'un congé parental de 1 an.
+						</p>
+					</article>
+
+					<!-- Benefit 12 -->
+					<article
 						class="relative bg-gray-800 p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
 						<div class="absolute top-4 right-4 bg-green-400 text-gray-800 text-xs px-2 py-1 rounded-full">
-							Financier</div>
-						<h3 class="text-xl font-semibold text-gray-300 mb-4">Transport en commun</h3>
-						<p class="text-gray-400 font-light">Les déplacements pour les transports en commun sont couverts
-							pour ceux
-							qui travaillent au bureau.</p>
-					</div>
+							Financier
+						</div>
+						<h3 class="text-xl font-semibold text-gray-300 mb-4">Transport</h3>
+						<p class="text-gray-400 font-light">
+							Les déplacements pour les transports en commun sont couverts pour ceux qui travaillent au
+							bureau.
+						</p>
+					</article>
 				</div>
 			</div>
 		</section>
+		<!-- End Why Work With Us Section -->
 
+		<!-- Start Available Job Openings Section-->
 		<section class="py-8 bg-gray-50" id="sectionAvailableOpenings">
-			<div class="max-w-7xl mx-auto px-6">
-				<h2 class="text-3xl font-light text-center text-gray-500 my-16">Poste de disponibles</h2>
+			<div class="container max-w-7xl mx-auto px-6">
+				<h2 class="text-3xl font-light text-center text-gray-500 my-16">Postes disponibles</h2>
+				<!-- Wrapper -->
 				<div class="divide-y divide-gray-200">
-					<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
-						<div class="flex items-center">
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Développeur Mobile</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Télétravail • 120,000 - 180,000 $</p>
+					<!-- Job 1 -->
+					<article>
+						<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">Développeur Mobile</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Télétravail • 120,000 - 180,000 $</p>
+								</div>
 							</div>
-						</div>
-						<div class="bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							Développement
-						</div>
-					</a>
-
-					<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
-						<div class="flex items-center">
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Ingénieur Cloud</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Télétravail • 105,000 - 190,000 $</p>
+							<div class="bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								Développement
 							</div>
-						</div>
-						<div class="bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							Développement
-						</div>
-					</a>
+						</a>
+					</article>
 
-					<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
-						<div class="flex items-center">
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Ingénieur Logiciel, Backend</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Télétravail • 110,000 - 220,000 $</p>
+					<!-- Job 2 -->
+					<article>
+						<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">Ingénieur Cloud</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Télétravail • 105,000 - 190,000 $</p>
+								</div>
 							</div>
-						</div>
-						<div class="bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							Développement
-						</div>
-					</a>
-
-					<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
-						<div class="flex items-center">
-
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Ingénieur Logiciel, Cloud
-								</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Télétravail • 140,000 - 220,000 $</p>
+							<div class="bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								Développement
 							</div>
-						</div>
-						<div class="bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							Développement
-						</div>
-					</a>
+						</a>
+					</article>
 
-					<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
-						<div class="flex items-center">
-
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Designer UX</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Paris • 100,000 - 160,000 $</p>
+					<!-- Job 3 -->
+					<article>
+						<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">Ingénieur Logiciel, Backend</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Télétravail • 110,000 - 220,000 $</p>
+								</div>
 							</div>
-						</div>
-						<div class="bg-purple-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							Design (UI/UX)</div>
-					</a>
-
-					<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
-						<div class="flex items-center">
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Spécialiste en Cybersécurité</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Montréal • 150,000 - 200,000 $</p>
+							<div class="bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								Développement
 							</div>
-						</div>
-						<div class="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							Cybersécurité</div>
-					</a>
+						</a>
+					</article>
 
-					<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
-						<div class="flex items-center">
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Analyste de Données</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Télétravail • 100,000 - 150,000 $</p>
+					<!-- Job 4 -->
+					<article>
+						<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">
+										Ingénieur Logiciel, Cloud
+									</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Télétravail • 140,000 - 220,000 $</p>
+								</div>
 							</div>
-						</div>
-						<div class="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							Données</div>
-					</a>
-
-
-					<a href="./job-form.html" class=" w-full flex justify-between items-center py-4">
-						<div class="flex items-center">
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Spécialiste en Bases de Données</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Sherbrooke • 120,000 - 180,000 $</p>
+							<div class="bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								Développement
 							</div>
-						</div>
-						<div class="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							Données</div>
-					</a>
+						</a>
+					</article>
 
-
-					<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
-						<div class="flex items-center">
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Ingénieur Machine Learning</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Paris • 200,000 - 300,000 $</p>
+					<!-- Job 5 -->
+					<article>
+						<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">Designer UX</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Paris • 100,000 - 160,000 $</p>
+								</div>
 							</div>
-						</div>
-						<div class="bg-fuchsia-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							<span class="hidden sm:inline">Intelligence Artificielle</span>
-							<span class="inline sm:hidden">IA</span>
-
-						</div>
-					</a>
-
-					<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
-						<div class="flex items-center">
-							<div>
-								<h3 class="text-lg font-semibold text-gray-800">Spécialiste en Intelligence Artificielle
-								</h3>
-								<p class="text-xs md:text-sm  text-gray-600">Paris • 180,000 - 250,000 $</p>
+							<div class="bg-purple-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								Design (UI/UX)
 							</div>
-						</div>
-						<div class="bg-fuchsia-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
-							<span class="hidden sm:inline">Intelligence Artificielle</span>
-							<span class="inline sm:hidden">IA</span>
-						</div>
-					</a>
+						</a>
+					</article>
+
+					<!-- Job 6 -->
+					<article>
+						<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">Spécialiste en Cybersécurité</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Montréal • 150,000 - 200,000 $</p>
+								</div>
+							</div>
+							<div class="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								Cybersécurité
+							</div>
+						</a>
+					</article>
+
+					<!-- Job 7 -->
+					<article>
+						<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">Analyste de Données</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Télétravail • 100,000 - 150,000 $</p>
+								</div>
+							</div>
+							<div class="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								Données
+							</div>
+						</a>
+					</article>
+
+					<!-- Job 8 -->
+					<article>
+						<a href="./job-form.html" class=" w-full flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">Spécialiste en Bases de Données</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Sherbrooke • 120,000 - 180,000 $</p>
+								</div>
+							</div>
+							<div class="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								Données
+							</div>
+						</a>
+					</article>
+
+					<!-- Job 9 -->
+					<article>
+						<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">Ingénieur Machine Learning</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Paris • 200,000 - 300,000 $</p>
+								</div>
+							</div>
+							<div class="bg-fuchsia-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								<span class="hidden sm:inline">Intelligence Artificielle</span>
+								<span class="inline sm:hidden">IA</span>
+							</div>
+						</a>
+					</article>
+
+					<!-- Job 10 -->
+					<article>
+						<a href="./job-form.html" class="flex justify-between items-center py-4 cursor-pointer">
+							<div class="flex items-center">
+								<div>
+									<h3 class="text-lg font-semibold text-gray-800">
+										Spécialiste en Intelligence Artificielle
+									</h3>
+									<p class="text-xs md:text-sm  text-gray-600">Paris • 180,000 - 250,000 $</p>
+								</div>
+							</div>
+							<div class="bg-fuchsia-500 text-white text-xs font-semibold px-3 py-1 rounded-full mr-3">
+								<span class="hidden sm:inline">Intelligence Artificielle</span>
+								<span class="inline sm:hidden">IA</span>
+							</div>
+						</a>
+					</article>
 				</div>
+				<!-- End Wrapper -->
 			</div>
 		</section>
+		<!-- End Available Job Openings Section-->
+
 	</main>
 
 	<footer class="bg-slate-100 dark:bg-gray-900">
@@ -499,17 +624,21 @@
 				</div>
 				<div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
 					<div>
-						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Ressources</h2>
+						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
+							Ressources
+						</h2>
 						<ul class="text-gray-500 dark:text-gray-400 font-medium">
 							<li class="mb-4">
 								<a href="./career.html"
 									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
-									Carrière</a>
+									Carrière
+								</a>
 							</li>
 							<li>
 								<a href="./../support.html"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Centre
-									d'aide</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Centre d'aide
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -518,11 +647,15 @@
 						<ul class="text-gray-500 dark:text-gray-400 font-medium">
 							<li class="mb-4">
 								<a href="https://facebook.com" target="_blank" rel="noopener"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Facebook</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Facebook
+								</a>
 							</li>
 							<li>
 								<a href="https://x.com/?lang=fr" target="_blank" rel="noopener"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Twitter</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Twitter
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -531,15 +664,15 @@
 						<ul class="text-gray-500 dark:text-gray-400 font-medium">
 							<li class="mb-4">
 								<a href="#"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Politique
-									de
-									confidentialité</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Politique de confidentialité
+								</a>
 							</li>
 							<li>
 								<a href="#"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Termes
-									et
-									conditions</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Termes et conditions
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -569,9 +702,8 @@
 			</div>
 			<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
 			<div class="grid grid-cols-12">
-				<span class="text-sm text-start text-gray-500 dark:text-gray-400 col-span-10">© 2024 Mimon - Tous
-					droits
-					réservés.
+				<span class="text-sm text-start text-gray-500 dark:text-gray-400 col-span-10">
+					© 2024 Mimon - Tous droits réservés.
 				</span>
 				<div class="flex justify-end items-center col-span-2 mr-2 lg:mr-6">
 					<a href="https://facebook.com" target="_blank" rel="noopener"
@@ -598,18 +730,6 @@
 			</div>
 		</div>
 	</footer>
-	<script>
-		document.addEventListener('scroll', function () {
-			const scrollPosition = window.scrollY;
-			const image = document.getElementById('parallax-image');
-
-			// Adjust this value for parallax speed (lower value = slower movement)
-			const parallaxFactor = 0.1;
-
-			// const interval = setInterval(() => {
-			image.setAttribute('y', scrollPosition * parallaxFactor);
-		});
-	</script>
 </body>
 
 </html>

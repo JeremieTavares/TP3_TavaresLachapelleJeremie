@@ -1,0 +1,94 @@
+{
+	"name": "Mimon - Trouvez votre séjour parfait",
+	"short_name": "Mimon",
+	"id": "96147",
+	"orientation": "landscape",
+	"lang": "fr",
+	"start_url": "index.html",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#EF3B5D",
+	"description": "Mimon - Une plateforme en ligne qui connecte les propriétaires avec des voyageurs en quête de séjours uniques à court et long terme dans le monde entier.",
+	"icons": [
+		{
+			"src": "./public/icons/maskable_icon_x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "./public/icons/maskable_icon_x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "./public/icons/maskable_icon_x144.png",
+			"sizes": "144x144",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "./public/icons/maskable_icon_x144.png",
+			"sizes": "144x144",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "./public/icons/maskable_icon_x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "./public/icons/maskable_icon_x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "./public/images/screenshots/wide/screenshot-homes.png",
+			"sizes": "3454x1920",
+			"type": "image/png",
+			"form_factor": "wide",
+			"label": "Liste des logements et maison disponibles sur l'application"
+		},
+		{
+			"src": "./public/images/screenshots/wide/screenshot-cities.png",
+			"sizes": "3454x1920",
+			"type": "image/png",
+			"form_factor": "wide",
+			"label": "Ville les plus populaires sur l'application"
+		},
+		{
+			"src": "./public/images/screenshots/wide/screenshot-herosection.png",
+			"sizes": "3454x1920",
+			"type": "image/png",
+			"form_factor": "wide",
+			"label": "Page d'accueil de l'application"
+		},
+		{
+			"src": "./public/images/screenshots/narrow/screenshot-homes.png",
+			"sizes": "644x1396",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "Liste des logements et maison disponibles sur l'application"
+		},
+		{
+			"src": "./public/images/screenshots/narrow/screenshot-cities.png",
+			"sizes": "644x1396",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "Ville les plus populaires sur l'application"
+		},
+		{
+			"src": "./public/images/screenshots/narrow/screenshot-herosection.png",
+			"sizes": "644x1396",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "Page d'accueil de l'application"
+		}
+	]
+}

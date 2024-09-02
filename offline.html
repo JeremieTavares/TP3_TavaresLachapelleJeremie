@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vous êtes hors ligne</title>
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mimon - Vous êtes hors ligne<">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-navbutton-color" content="#ffffff">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="512x512" href="./public/icons/maskable_icon_x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./public/icons/maskable_icon_x512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./public/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./public/icons/favicon-16x16.png">
+
+    <!-- Custom styles - Used to load tailwind css and utilities classes -->
+    <link rel="stylesheet" href="./public/css/styles.css">
+
+    <!-- CDN styles -->
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+
+    <!-- CDN scripts -->
+    <script src="/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+</head>
+
+<body class="relative bg-white">
+    <main class="flex flex-col items-center justify-center h-screen space-y-4">
+        <div class="text-center p-8 bg-white shadow-lg rounded-lg max-w-lg">
+            <div class="mb-6">
+                <i class="fa-solid fa-triangle-exclamation text-3xl text-red"></i>
+            </div>
+            <h1 class="text-2xl font-semibold text-gray-800 mb-4">Oups! Vous êtes hors ligne</h1>
+            <p class="text-gray-600 mb-6">
+                Il semble que vous n'ayez pas de connexion Internet. Veuillez vérifier votre connexion et réessayer.
+            </p>
+            <button type="button" onclick="location.reload();"
+                class="inline-block text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 focus:ring-4 focus:outline-none font-medium rounded-full text-md px-4 py-3 text-center">
+                Réessayer
+            </button>
+        </div>
+    </main>
+</body>
+
+</html>

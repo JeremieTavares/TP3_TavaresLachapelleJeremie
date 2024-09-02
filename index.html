@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -17,39 +17,69 @@
 	<meta name="msapplication-navbutton-color" content="#ffffff">
 
 	<!-- Favicons -->
-	<link rel="icon" href="./public/images/mimon_logo.png" sizes="32x32">
-	<link rel="icon" href="./public/images/mimon_logo.png" sizes="192x192">
-	<link rel="apple-touch-icon" href="./public/images/mimon_logo.png">
+	<link rel="apple-touch-icon" sizes="512x512" href="./public/icons/maskable_icon_x512.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="./public/icons/maskable_icon_x512.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./public/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./public/icons/favicon-16x16.png">
 
 	<!-- Custom styles - Used to load tailwind css and utilities classes -->
 	<link rel="stylesheet" href="./public/css/styles.css">
 
 	<!-- CDN styles -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
 
 	<!-- CDN scripts -->
-	<script src="https://kit.fontawesome.com/475ed1ea72.js" crossorigin="anonymous"></script>
+	<script src="./node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 
 	<!-- Custom scripts -->
 	<script defer src="./public/js/main.js"></script>
+
+	<!-- PWA -->
+	<link rel="manifest" href="./manifest.json">
+	<script>
+		if ("serviceWorker" in navigator) {
+			window.addEventListener("load", () => {
+				navigator.serviceWorker
+					.register("./service-worker.js")
+					.then((registration) => {
+						console.log("[ServiceWorker] registered with scope:", registration.scope);
+					})
+					.catch((err) => {
+						console.log("[ServiceWorker] registration failed:", err);
+					});
+			});
+		}
+	</script>
 </head>
 
 <body class="relative bg-white">
 	<!-- For screen reader accessibility -->
 	<a href="#main-content" class="skip-to-main-link">Aller au contenu principal</a>
 	<header class="sticky top-0 left-0 z-50">
-		<nav class="bg-white dark:bg-gray-900  w-full z-20  border-b border-gray-200 dark:border-gray-600">
+		<!-- Start Main Navbar -->
+		<nav class="bg-white dark:bg-gray-900 w-full z-20 border-b border-gray-200 dark:border-gray-600">
 			<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 				<a href="#main-content" class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
 					<img loading="lazy" src="./public/images/mimon_logo.png" class="h-12" alt="Mimon logo">
-					<span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700">Mimon</span>
+					<span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700 hidden md:inline">
+						Mimon
+					</span>
 				</a>
-				<div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+				<div class="flex md:order-2 space-x-3 rtl:space-x-reverse">
+					<!-- Install PWA Button -->
+					<button id="installPWAButton"
+						class="text-[17px] font-light border text-black border-black hover:bg-black hover:text-white hover:cursor-pointer py-2 pl-3 pr-3 rounded-full transition-all hover:scale-[.99]">
+						<i class="fa-solid fa-circle-down"></i>
+						Installer
+					</button>
+					<!-- Login Button -->
 					<button type="button"
-						class="text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 focus:ring-4 focus:outline-none font-medium rounded-full text-md px-4 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-						Connexion</button>
+						class="text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 focus:ring-4 focus:outline-none font-medium rounded-full text-md px-4 py-3 text-center">
+						Connexion
+					</button>
+					<!-- Mobile menu Button -->
 					<button data-collapse-toggle="navbar-sticky" type="button"
-						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
 						aria-controls="navbar-sticky" aria-expanded="false">
 						<span class="sr-only">Ouvrir le menu principal</span>
 						<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -66,86 +96,91 @@
 						<li>
 							<a href="#main-content"
 								class="block py-2 px-3 transition-all text-red bg-gray-100 rounded-full cursor-pointer"
-								aria-current="page"><i class="fa-regular fa-building min-w-[1.3rem] md:min-w-min"></i>
-								Accueil</a>
+								aria-current="page">
+								<i class="fa-solid fa-house min-w-[1.3rem] md:min-w-min"></i>
+								Accueil
+							</a>
 						</li>
 						<li>
 							<a href="./resources/views/jobs/career.html"
-								class="block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100  rounded-full cursor-pointer">
-								<i class="fa-regular fa-comments min-w-[1.3rem] md:min-w-min"></i> Carrière</a>
+								class="block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer">
+								<i class="fa-solid fa-laptop-code min-w-[1.3rem] md:min-w-min"></i>
+								Carrière
+							</a>
 						</li>
 						<li>
 							<a href="./resources/views/support.html"
 								class="block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer">
-								<i class="fa-regular fa-life-ring min-w-[1.3rem] md:min-w-min"></i> Support</a>
+								<i class="fa-solid fa-life-ring min-w-[1.3rem] md:min-w-min"></i>
+								Support
+							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
+		<!-- End Main Navbar -->
 	</header>
 
 	<main id="main-content">
 
-		<!-- Start hero section -->
+		<!-- Start Hero Section -->
 		<section
 			class="hero-section py-10 md:py-20 h-full xl:h-[880px] md:bg-fixed bg-right bg-no-repeat md:bg-cover bg-island-darken-blur">
-			<div class="container mx-auto px-5 lg:px-0">
+			<div class="container mx-auto px-5">
 				<div class="grid grid-cols-2">
 					<div class="col-span-2 md:col-span-1 mb-10">
 						<h1
 							class="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-8xl text-neutral-50 font-semibold leading-none">
-							Des destinations
-							inspirantes
-							pour vous
-							héberger</h1>
+							Des destinations inspirantes pour vous héberger
+						</h1>
 						<p class="text-neutral-50 my-12 mr-20">
 							Mimon est une plateforme en ligne qui connecte les propriétaires de logements avec des
-							voyageurs à la
-							recherche d'un
-							hébergement de courte durée ou de longue durée dans le monde entier.</p>
+							voyageurs à la recherche d'un hébergement de courte durée ou de longue durée dans le
+							monde entier.
+						</p>
+						<!-- Download in app store -->
 						<div class="flex">
 							<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
 								class="cursor-pointer">
-								<img loading="lazy" src="./public/images/download_apple_store_dark_fr_CA.svg"
-									class="mr-4 md:mr-10 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
+								<img src="./public/images/download_apple_store_dark_fr_CA.svg"
+									class="mr-2 md:mr-6 w-[140px] md:w-[180px]" alt="Télécharger sur l'apple store">
 							</a>
 							<a href="https://play.google.com/store/games?hl=en&pli=1" target="_blank" rel="noopener"
 								class="cursor-pointer">
-								<img loading="lazy" src="./public/images/download_google_store_dark_fr_CA.png"
-									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px]">
+								<img src="./public/images/download_google_store_dark_fr_CA.png"
+									alt="Télécharger sur le Google store" class="w-[140px] md:w-[180px] !h-[55.91px]">
 							</a>
 						</div>
 					</div>
-
 
 					<!-- Mobile image gallery -->
 					<div id="default-carousel" class="w-full md:hidden col-span-2" data-carousel="slide">
 						<!-- Carousel wrapper -->
 						<div class="relative h-60 overflow-hidden rounded-lg md:h-96">
-							<!-- Item 1 -->
+							<!-- Island Image-->
 							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
-								<img loading="lazy" src="./public/images/island-destination.png"
-									class=" absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
-									alt="destination plage de Tahiti">
-							</div>
-							<!-- Item 2 -->
-							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
-								<img loading="lazy" src="./public/images/thailand-pool-destination.png"
-									class="absolute block w-full h-full  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
-									alt="destination maison avec piscine en Thaïlande">
-							</div>
-							<!-- Item 3 -->
-							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
-								<img loading="lazy" src="./public/images/north-quebec-destination.png"
+								<img src="./public/images/island-destination.png"
 									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
-									alt="destination nord du Québec">
+									alt="Destination plage de Tahiti">
 							</div>
-							<!-- Item 4 -->
+							<!-- Thailand Pool Image -->
 							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
-								<img loading="lazy" src="./public/images/cabin-in-the-wood-destination.png"
+								<img src="./public/images/thailand-pool-destination.png"
 									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
-									alt="destination maison dans le bois Caroline du Nord, USA">
+									alt="Destination maison avec piscine en Thaïlande">
+							</div>
+							<!-- North Quebec Image-->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/north-quebec-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="Destination nord du Québec">
+							</div>
+							<!-- Cabins In The Wood Image-->
+							<div class="hidden duration-700 ease-in-out w-full h-60" data-carousel-item>
+								<img src="./public/images/cabin-in-the-wood-destination.png"
+									class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
+									alt="Destination maison dans le bois Caroline du Nord, USA">
 							</div>
 						</div>
 					</div>
@@ -154,10 +189,13 @@
 					<!-- Desktop image gallery -->
 					<div class="col-span-2 md:col-span-1 hidden md:block">
 						<div class="grid grid-cols-2 gap-4">
+							<!-- Island Image-->
 							<img class="col-span-2 rounded-2xl" src="./public/images/island-destination.png"
 								alt="destination plage de Tahiti">
+							<!-- Thailand Pool Image -->
 							<img class="col-span-1 rounded-2xl" src="./public/images/thailand-pool-destination.png"
 								alt="destination maison avec piscine en Thaïlande">
+							<!-- North Quebec Image-->
 							<img class="col-span-1 rounded-2xl" src="./public/images/north-quebec-destination.png"
 								alt="destination nord du Québec">
 						</div>
@@ -165,19 +203,23 @@
 				</div>
 			</div>
 		</section>
-		<!-- End hero section -->
+		<!-- End Hero Section -->
 
-
+		<!-- Start Featured Rentals Section -->
 		<section>
 			<div class="container mx-auto px-5">
 				<div class="my-20 text-center">
 					<h2 class="text-4xl font-semibold text-gray-700">
-						Nos coups de <i class="fa-solid fa-heart fa-beat text-red"></i> de la semaine</h2>
+						Nos coups de <i class="fa-solid fa-heart fa-beat text-red"></i> de la semaine
+					</h2>
 				</div>
 			</div>
+			<!-- Rentals listing have a larger screen width -->
 			<div class="container xl:max-w-[1680px] mx-auto px-3 xl:px-20">
 				<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-3 lg:gap-6">
-					<div class="rounded-lg overflow-hidden">
+
+					<!-- Start Featured Rental 1 - Venise en Qc-->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselVeniseEnQc" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -218,8 +260,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Previous</span>
 								</span>
@@ -232,20 +273,18 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Next</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Venise, Qc, Canada</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$205 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$205 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Bord de l'eau</p>
@@ -289,11 +328,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
-					<div class="rounded-lg overflow-hidden">
+					</article>
+					<!-- End Featured Rental 1 - Venise en Qc-->
+
+					<!-- Start Featured Rental 2 - St-Calixte-->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselStCalixte" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -307,7 +350,7 @@
 								<!-- Slide 2 -->
 								<div class="hidden duration-700 ease-in-out aspect-square w-full" data-carousel-item>
 									<img loading="lazy"
-										src="./public/images/places/St-Calixte/st-calixte-front-lake.webp"
+										src="./public/images/places/St-Calixte/st-calixte-front-lake.png"
 										class="absolute block w-full h-full object-cover" alt="Maison St-Calixte - Lac">
 								</div>
 								<!-- Slide 3 -->
@@ -334,8 +377,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Previous</span>
 								</span>
@@ -348,20 +390,18 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Next</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">St-Calixte, Qc, Canada</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$115 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$115 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">En forêt - Libre de voisin</p>
@@ -404,11 +444,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
-					<div class="rounded-lg overflow-hidden">
+					</article>
+					<!-- End Featured Rental 2 - St-Calixte-->
+
+					<!-- Start Featured Rental 3 - Montréal-->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselMontreal" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -445,8 +489,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Previous</span>
 								</span>
@@ -459,20 +502,18 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Next</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Montréal, Qc, Canada</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$165 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$165 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">En ville - Condo - Gym et Piscine</p>
@@ -515,11 +556,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
-					<div class="rounded-lg overflow-hidden">
+					</article>
+					<!-- End Featured Rental 3 - Montréal-->
+
+					<!-- Start Featured Rental 4 - Beloeil -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselBeloeil" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -555,8 +600,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Previous</span>
 								</span>
@@ -569,25 +613,22 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Next</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Beloeil, Qc, Canada</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$210 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$210 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Bord de l'eau et vue sur la montage</p>
 							<p class="text-[15px] text-gray-500">Sep. 22 - 27</p>
-
 
 							<div class="flex items-center">
 								<svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true"
@@ -627,11 +668,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
-					<div class="rounded-lg overflow-hidden">
+					</article>
+					<!-- End Featured Rental 4 - Beloeil-->
+
+					<!-- Start Featured Rental 5 - Lenox USA -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselLenox" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -671,8 +716,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Previous</span>
 								</span>
@@ -685,20 +729,18 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Next</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Lenox, MA, USA</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$1400 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$1400 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Bord de l'eau</p>
@@ -741,13 +783,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
+					</article>
+					<!-- End Featured Rental 5 - Lenox USA -->
 
-
-					<div class="rounded-lg overflow-hidden">
+					<!-- Start Featured Rental 6 - Galway -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselGalway" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -787,8 +831,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Précédent</span>
 								</span>
@@ -801,20 +844,18 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Suivant</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Galway, IE</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$400 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$400 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Historique - Château</p>
@@ -857,12 +898,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
+					</article>
+					<!-- End Featured Rental 6 - Galway -->
 
-					<div class="rounded-lg overflow-hidden">
+					<!-- Start Featured Rental 7 - Pontevedra -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselPontevedra" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -905,8 +949,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Précédent</span>
 								</span>
@@ -919,20 +962,18 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Suivant</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Pontevedra, ES</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$325 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$325 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Historique - Vue sur le lac</p>
@@ -975,13 +1016,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
+					</article>
+					<!-- End Featured Rental 7 - Pontevedra -->
 
-
-					<div class="rounded-lg overflow-hidden">
+					<!-- Start Featured Rental 8 - Mooresville USA -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselMooresville" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -1025,8 +1068,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Previous</span>
 								</span>
@@ -1039,20 +1081,18 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Next</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Mooresville, NC, USA</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$1620 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$1620 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Bord de l'eau - Piscine</p>
@@ -1095,11 +1135,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
-					<div class="rounded-lg overflow-hidden">
+					</article>
+					<!-- End Featured Rental 8 - Mooresville USA -->
+
+					<!-- Start Featured Rental 9 - Isle Of Palms -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselIsleOfPalms" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -1143,8 +1187,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Previous</span>
 								</span>
@@ -1157,20 +1200,18 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill=" none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Next</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Isle Of Palms, SC, USA</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$5000 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$5000 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Vue sur la mer - Piscine</p>
@@ -1213,12 +1254,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
+					</article>
+					<!-- End Featured Rental 9 - Isle Of Palms -->
 
-					<div class="rounded-lg overflow-hidden">
+					<!-- Start Featured Rental 10 - Broadcove -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselBroadcove" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -1261,8 +1305,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Précédent</span>
 								</span>
@@ -1275,20 +1318,19 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Suivant</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Broadcove, ME, USA</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$500 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$500 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">En forêt - Vue sur la mer</p>
@@ -1331,12 +1373,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
+					</article>
+					<!-- End Featured Rental 10 - Broadcove -->
 
-					<div class="rounded-lg overflow-hidden">
+					<!-- Start Featured Rental 11 - Bethel -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselBethel" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -1376,8 +1421,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Précédent</span>
 								</span>
@@ -1390,25 +1434,22 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Suivant</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Bethel, ME, USA</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$100 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$100 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Chalet - En forêt</p>
 							<p class="text-[15px] text-gray-500">Oct. 22 - 25</p>
-
 
 							<div class="flex items-center">
 								<svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true"
@@ -1448,13 +1489,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
+					</article>
+					<!-- End Featured Rental 11 - Bethel -->
 
-
-					<div class="rounded-lg overflow-hidden">
+					<!-- Start Featured Rental 12 - Huntsville -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselHuntsville" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -1497,8 +1540,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Précédent</span>
 								</span>
@@ -1511,20 +1553,18 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Suivant</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Huntsville, AL, USA</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$190 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$190 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Chalet - En forêt - Jacuzzi</p>
@@ -1567,14 +1607,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
+					</article>
+					<!-- End Featured Rental 12 - Huntsville -->
 
-
-
-					<div class="rounded-lg overflow-hidden">
+					<!-- Start Featured Rental 13 - Farmington -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselFarmington" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -1618,8 +1659,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Précédent</span>
 								</span>
@@ -1632,25 +1672,22 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Suivant</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Farmington, NM, USA</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$340 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$340 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">En forêt - Design unique</p>
 							<p class="text-[15px] text-gray-500">Oct. 7 - 10</p>
-
 
 							<div class="flex items-center">
 								<svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true"
@@ -1690,13 +1727,15 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
+					</article>
+					<!-- End Featured Rental 13 - Farmington -->
 
-
-					<div class="rounded-lg overflow-hidden">
+					<!-- Start Featured Rental 14 - Pownal -->
+					<article class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselPownal" class="relative" data-carousel="static">
 							<!-- Carousel wrapper -->
@@ -1736,8 +1775,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Précédent</span>
 								</span>
@@ -1750,25 +1788,22 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Suivant</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Pownal, VT, USA</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$200 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$200 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Design unique</p>
 							<p class="text-[15px] text-gray-500">Sep. 20 - 23</p>
-
 
 							<div class="flex items-center">
 								<svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true"
@@ -1808,13 +1843,14 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
-					</div>
+					</article>
+					<!-- End Featured Rental 14 - Pownal -->
 
-
-
+					<!-- Start Featured Rental 15 - Springfield -->
 					<div class="rounded-lg overflow-hidden">
 						<!-- Carousel -->
 						<div id="carouselSpringfield" class="relative" data-carousel="static">
@@ -1859,8 +1895,7 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M15 19l-7-7 7-7">
-										</path>
+											d="M15 19l-7-7 7-7"></path>
 									</svg>
 									<span class="sr-only">Précédent</span>
 								</span>
@@ -1873,25 +1908,22 @@
 									<svg aria-hidden="true" class="w-6 h-6 text-gray-700" fill="none"
 										stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M9 5l7 7-7 7">
-										</path>
+											d="M9 5l7 7-7 7"></path>
 									</svg>
 									<span class="sr-only">Suivant</span>
 								</span>
 							</button>
 						</div>
-						<!-- Informations de l'emplacement -->
+						<!-- Location informations-->
 						<div class="py-4">
 							<div class="flex flex-col lg:flex-row lg:justify-between">
 								<h3 class="text-base font-semibold text-gray-600">Springfield, MO, USA</h3>
-								<p class="font-regular text-gray-700 mt-4 lg:mt-0">$110 <span
-										class="text-gray-500 font-medium">/
-										nuit</span>
+								<p class="font-regular text-gray-700 mt-4 lg:mt-0">
+									$110 <span class="text-gray-500 font-medium">/ nuit</span>
 								</p>
 							</div>
 							<p class="text-[15px] text-gray-500">Design unique</p>
 							<p class="text-[15px] text-gray-500">Dec. 15 - 18</p>
-
 
 							<div class="flex items-center">
 								<svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true"
@@ -1931,174 +1963,198 @@
 								</button>
 								<button
 									class="text-sm mt-4 text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 py-2 px-3 rounded-full">
-									Réserver</button>
+									Réserver
+								</button>
 							</div>
 						</div>
 					</div>
+					<!-- End Featured Rental 15 - Springfield -->
 				</div>
+				<!-- End Responsive Grid Wrapper -->
 			</div>
+			<!-- End Container Wrapper -->
 		</section>
+		<!-- End Featured Rentals Section -->
 
+
+		<!-- Start Featured Destinations Section -->
 		<section>
 			<div class="container mx-auto px-5 mt-20 lg:mt-28">
 				<div class="text-center mb-10">
 					<h2 class="text-4xl font-semibold text-gray-700">Trouvez votre prochaine destination</h2>
-					<p class="text-neutral-500 font-light text-base md:text-lg my-6">Découvrez des destinations uniques
-						pour
-						votre
-						prochain
-						séjour.</p>
+					<p class="text-neutral-500 font-light text-base md:text-lg my-6">
+						Découvrez des destinations uniques pour votre prochain séjour.
+					</p>
 				</div>
 			</div>
+			<!-- Start Container Wrapper -->
 			<div
 				class="container xl:max-w-[1680px] mx-auto px-3 xl:px-20 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-10 mb-28">
-				<div class="relative overflow-hidden rounded-xl">
+
+				<!-- Card Destination Portugal -->
+				<article class="relative overflow-hidden rounded-xl">
 					<div class="absolute inset-0 bg-center"></div>
-					<div class="group relative m-0 flex rounded-xl ring-gray-900/5  aspect-square">
+					<div class="group relative m-0 flex rounded-xl ring-gray-900/5 aspect-square">
 						<div
 							class="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
-							<img loading="lazy" src="./public/images/cities/portugal.png"
+							<img loading="lazy" src="./public/images/cities/portugal.jpg"
 								class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-[1.04] 2xl:group-hover:scale-110"
 								alt="Portugal">
 						</div>
 						<div
 							class="absolute bottom-0 z-20 m-0 pb-2 ps-2 lg:pb-4 lg:ps-4 transition duration-300 ease-in-out group-hover:-translate-y-[1.04px] group-hover:translate-x-1 md:group-hover:translate-x-[5px] 2xl:group-hover:translate-x-3 group-hover:scale-[1.04] 2xl:group-hover:scale-110 bg-[#0000003f] group-hover:bg-[#00000088] rounded-xl w-full">
-							<span class="font-serif text-2xl font-bold text-white block">Les Açores</span>
-							<span class="text-sm font-light text-white mr-3 block">Une petit île paradisiaque au
-								Portugal</span>
+							<h3 class="font-serif text-2xl font-bold text-white block">Portugal</h3>
+							<span class="text-sm font-light text-white mr-3 block">
+								Visitez les Açores, une petite île paradisiaque
+							</span>
 						</div>
 					</div>
-				</div>
+				</article>
 
-
-				<div class="relative overflow-hidden rounded-xl">
+				<!-- Card Destination UK -->
+				<article class="relative overflow-hidden rounded-xl">
 					<div class="absolute inset-0 bg-center"></div>
-					<div class="group relative m-0 flex rounded-xl ring-gray-900/5  aspect-square">
+					<div class="group relative m-0 flex rounded-xl ring-gray-900/5 aspect-square">
 						<div
 							class="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
-							<img loading="lazy" src="./public/images/cities/uk.png"
+							<img loading="lazy" src="./public/images/cities/uk.jpg"
 								class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-[1.04] 2xl:group-hover:scale-110"
 								alt="Royaume-Uni">
 						</div>
 						<div
 							class="absolute bottom-0 z-20 m-0 pb-2 ps-2 lg:pb-4 lg:ps-4 transition duration-300 ease-in-out group-hover:-translate-y-[1.04px] group-hover:translate-x-1 md:group-hover:translate-x-[5px] 2xl:group-hover:translate-x-3 group-hover:scale-[1.04] 2xl:group-hover:scale-110 bg-[#0000003f] group-hover:bg-[#00000088] rounded-xl w-full">
-							<span class="font-serif text-2xl font-bold text-white block">Royaume-Uni</span>
-							<span class="text-sm font-light text-white mr-3 block">Découvrez la beauté du
-								Royaume-Uni</span>
+							<h3 class="font-serif text-2xl font-bold text-white block">Royaume-Uni</h3>
+							<span class="text-sm font-light text-white mr-3 block">
+								Découvrez la beauté du Royaume-Uni
+							</span>
 						</div>
 					</div>
-				</div>
+				</article>
 
-				<div class="relative overflow-hidden rounded-xl">
+				<!-- Card Destination Japon -->
+				<article class="relative overflow-hidden rounded-xl">
 					<div class="absolute inset-0 bg-center"></div>
-					<div class="group relative m-0 flex rounded-xl ring-gray-900/5  aspect-square">
+					<div class="group relative m-0 flex rounded-xl ring-gray-900/5 aspect-square">
 						<div
 							class="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
-							<img loading="lazy" src="./public/images/cities/japan.png"
+							<img loading="lazy" src="./public/images/cities/japan.jpg"
 								class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-[1.04] 2xl:group-hover:scale-110"
 								alt="Japon">
 						</div>
 						<div
 							class="absolute bottom-0 z-20 m-0 pb-2 ps-2 lg:pb-4 lg:ps-4 transition duration-300 ease-in-out group-hover:-translate-y-[1.04px] group-hover:translate-x-1 md:group-hover:translate-x-[5px] 2xl:group-hover:translate-x-3 group-hover:scale-[1.04] 2xl:group-hover:scale-110 bg-[#0000003f] group-hover:bg-[#00000088] rounded-xl w-full">
-							<span class="font-serif text-2xl font-bold text-white block">Japon</span>
-							<span class="text-sm font-light text-white mr-3 block">Explorez la culture et les traditions
-								japonaises </span>
+							<h3 class="font-serif text-2xl font-bold text-white block">Japon</h3>
+							<span class="text-sm font-light text-white mr-3 block">
+								Explorez la culture et les traditions japonaises
+							</span>
 						</div>
 					</div>
-				</div>
+				</article>
 
-				<div class="relative overflow-hidden rounded-xl">
+				<!-- Card Destination Los Angeles -->
+				<article class="relative overflow-hidden rounded-xl">
 					<div class="absolute inset-0 bg-center"></div>
-					<div class="group relative m-0 flex rounded-xl ring-gray-900/5  aspect-square">
+					<div class="group relative m-0 flex rounded-xl ring-gray-900/5 aspect-square">
 						<div
 							class="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
-							<img loading="lazy" src="./public/images/cities/los-angeles.png"
+							<img loading="lazy" src="./public/images/cities/los-angeles.jpg"
 								class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-[1.04] 2xl:group-hover:scale-110"
 								alt="Los-angeles">
 						</div>
 						<div
 							class="absolute bottom-0 z-20 m-0 pb-2 ps-2 lg:pb-4 lg:ps-4 transition duration-300 ease-in-out group-hover:-translate-y-[1.04px] group-hover:translate-x-1 md:group-hover:translate-x-[5px] 2xl:group-hover:translate-x-3 group-hover:scale-[1.04] 2xl:group-hover:scale-110 bg-[#0000003f] group-hover:bg-[#00000088] rounded-xl w-full">
-							<span class="font-serif text-2xl font-bold text-white block">Los Angeles</span>
-							<span class="text-sm font-light text-white mr-3 block">Découvrez la ville animée de Los
-								Angeles</span>
+							<h3 class="font-serif text-2xl font-bold text-white block">Los Angeles</h3>
+							<span class="text-sm font-light text-white mr-3 block">
+								Découvrez la ville animée de Los Angeles
+							</span>
 						</div>
 					</div>
-				</div>
+				</article>
 
-				<div class="relative overflow-hidden rounded-xl">
+				<!-- Card Destination Paris -->
+				<article class="relative overflow-hidden rounded-xl">
 					<div class="absolute inset-0 bg-center"></div>
-					<div class="group relative m-0 flex rounded-xl ring-gray-900/5  aspect-square">
+					<div class="group relative m-0 flex rounded-xl ring-gray-900/5 aspect-square">
 						<div
 							class="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
-							<img loading="lazy" src="./public/images/cities/france.png"
+							<img loading="lazy" src="./public/images/cities/france.jpg"
 								class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-[1.04] 2xl:group-hover:scale-110"
 								alt="France">
 						</div>
 						<div
 							class="absolute bottom-0 z-20 m-0 pb-2 ps-2 lg:pb-4 lg:ps-4 transition duration-300 ease-in-out group-hover:-translate-y-[1.04px] group-hover:translate-x-1 md:group-hover:translate-x-[5px] 2xl:group-hover:translate-x-3 group-hover:scale-[1.04] 2xl:group-hover:scale-110 bg-[#0000003f] group-hover:bg-[#00000088] rounded-xl w-full">
-							<span class="font-serif text-2xl font-bold text-white block">France</span>
-							<span class="text-sm font-light text-white mr-3 block">Découvrez la France, ville de
-								l'amour</span>
+							<h3 class="font-serif text-2xl font-bold text-white block">France</h3>
+							<span class="text-sm font-light text-white mr-3 block">
+								Découvrez la France, ville de l'amour
+							</span>
 						</div>
 					</div>
-				</div>
+				</article>
 
-				<div class="relative overflow-hidden rounded-xl">
+				<!-- Card Destination Tahiti-->
+				<article class="relative overflow-hidden rounded-xl">
 					<div class="absolute inset-0 bg-center"></div>
-					<div class="group relative m-0 flex rounded-xl ring-gray-900/5  aspect-square">
+					<div class="group relative m-0 flex rounded-xl ring-gray-900/5 aspect-square">
 						<div
 							class="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
-							<img loading="lazy" src="./public/images/cities/tahiti.png"
+							<img loading="lazy" src="./public/images/cities/tahiti.jpg"
 								class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-[1.04] 2xl:group-hover:scale-110"
 								alt="Tahiti">
 						</div>
 						<div
 							class="absolute bottom-0 z-20 m-0 pb-2 ps-2 lg:pb-4 lg:ps-4 transition duration-300 ease-in-out group-hover:-translate-y-[1.04px] group-hover:translate-x-1 md:group-hover:translate-x-[5px] 2xl:group-hover:translate-x-3 group-hover:scale-[1.04] 2xl:group-hover:scale-110 bg-[#0000003f] group-hover:bg-[#00000088] rounded-xl w-full">
-							<span class="font-serif text-2xl font-bold text-white block">Tahiti</span>
-							<span class="text-sm font-light text-white mr-3 block">Un paradis tropical qui fait
-								rêver</span>
+							<h3 class="font-serif text-2xl font-bold text-white block">Tahiti</h3>
+							<span class="text-sm font-light text-white mr-3 block">
+								Un paradis tropical qui fait rêver
+							</span>
 						</div>
 					</div>
-				</div>
+				</article>
 
-				<div class="relative overflow-hidden rounded-xl">
+				<!-- Card Destination Israël -->
+				<article class="relative overflow-hidden rounded-xl">
 					<div class="absolute inset-0 bg-center"></div>
-					<div class="group relative m-0 flex rounded-xl ring-gray-900/5  aspect-square">
+					<div class="group relative m-0 flex rounded-xl ring-gray-900/5 aspect-square">
 						<div
 							class="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
-							<img loading="lazy" src="./public/images/cities/israel.png"
+							<img loading="lazy" src="./public/images/cities/israel.jpg"
 								class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-[1.04] 2xl:group-hover:scale-110"
 								alt="Israël">
 						</div>
 						<div
 							class="absolute bottom-0 z-20 m-0 pb-2 ps-2 lg:pb-4 lg:ps-4 transition duration-300 ease-in-out group-hover:-translate-y-[1.04px] group-hover:translate-x-1 md:group-hover:translate-x-[5px] 2xl:group-hover:translate-x-3 group-hover:scale-[1.04] 2xl:group-hover:scale-110 bg-[#0000003f] group-hover:bg-[#00000088] rounded-xl w-full">
-							<span class="font-serif text-2xl font-bold text-white block">Israël</span>
-							<span class="text-sm font-light text-white mr-3 block">Découvrez les sites historiques
-								d'Israël</span>
+							<h3 class="font-serif text-2xl font-bold text-white block">Israël</h3>
+							<span class="text-sm font-light text-white mr-3 block">
+								Découvrez les sites historiques d'Israël
+							</span>
 						</div>
 					</div>
-				</div>
-				<div class="relative overflow-hidden rounded-xl">
+				</article>
+
+				<!-- Card Destination Jamaïque -->
+				<article class="relative overflow-hidden rounded-xl">
 					<div class="absolute inset-0 bg-center"></div>
-					<div class="group relative m-0 flex rounded-xl ring-gray-900/5  aspect-square">
+					<div class="group relative m-0 flex rounded-xl ring-gray-900/5 aspect-square">
 						<div
 							class="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
-							<img loading="lazy" src="./public/images/cities/jamaica.png"
+							<img loading="lazy" src="./public/images/cities/jamaica.jpg"
 								class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-[1.04] 2xl:group-hover:scale-110"
 								alt="Jamaïque">
 						</div>
 						<div
 							class="absolute bottom-0 z-20 m-0 pb-2 ps-2 lg:pb-4 lg:ps-4 transition duration-300 ease-in-out group-hover:-translate-y-[1.04px] group-hover:translate-x-1 md:group-hover:translate-x-[5px] 2xl:group-hover:translate-x-3 group-hover:scale-[1.04] 2xl:group-hover:scale-110 bg-[#0000003f] group-hover:bg-[#00000088] rounded-xl w-full">
-							<span class="font-serif text-2xl font-bold text-white block">Jamaïque</span>
-							<span class="text-sm font-light text-white mr-3 block">Découvrez les merveilles de la
-								Jamaïque</span>
+							<h3 class="font-serif text-2xl font-bold text-white block">Jamaïque</h3>
+							<span class="text-sm font-light text-white mr-3 block">
+								Découvrez les merveilles de la Jamaïque
+							</span>
 						</div>
 					</div>
-				</div>
+				</article>
 			</div>
+			<!-- End Container Wrapper -->
 		</section>
+		<!-- End Featured Destinations Section -->
 	</main>
-
 
 	<footer class="bg-slate-100 dark:bg-gray-900">
 		<div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-16">
@@ -2116,12 +2172,14 @@
 							<li class="mb-4">
 								<a href="./resources/views/jobs/career.html"
 									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
-									Carrière</a>
+									Carrière
+								</a>
 							</li>
 							<li>
 								<a href="./resources/views/support.html"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Centre
-									d'aide</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Centre d'aide
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -2130,11 +2188,15 @@
 						<ul class="text-gray-500 dark:text-gray-400 font-medium">
 							<li class="mb-4">
 								<a href="https://facebook.com" target="_blank" rel="noopener"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Facebook</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Facebook
+								</a>
 							</li>
 							<li>
 								<a href="https://x.com/?lang=fr" target="_blank" rel="noopener"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Twitter</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Twitter
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -2143,15 +2205,15 @@
 						<ul class="text-gray-500 dark:text-gray-400 font-medium">
 							<li class="mb-4">
 								<a href="#"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Politique
-									de
-									confidentialité</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Politique de confidentialité
+								</a>
 							</li>
 							<li>
 								<a href="#"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Termes
-									et
-									conditions</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Termes et conditions
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -2181,9 +2243,8 @@
 			</div>
 			<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
 			<div class="grid grid-cols-12">
-				<span class="text-sm text-start text-gray-500 dark:text-gray-400 col-span-10">© 2024 Mimon - Tous
-					droits
-					réservés.
+				<span class="text-sm text-start text-gray-500 dark:text-gray-400 col-span-10">
+					© 2024 Mimon - Tous droits réservés.
 				</span>
 				<div class="flex justify-end items-center col-span-2 mr-2 lg:mr-6">
 					<a href="https://facebook.com" target="_blank" rel="noopener"

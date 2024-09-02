@@ -5,22 +5,8 @@
 -   -   `Command` + `Shift` + `P` et écrire "View: Toggle Terminal"
 -   -   `Control` + `
 -   Ensuite, dans le terminal, écrire:
--   -   `npm install` ensuite `npm run dev`
-
-`npm run dev` va permettre de lancer votre site web, compiler les styles Tailwind, en plus de détecter les changements dans les fichiers HTML, CSS et JavaScript et ainsi rafraîchir la page web automatiquement lorsque vous faites des modifications.
-
-## Pour lancer le mode watch pour le SCSS et le TS du projet (en mode développement):
-
--   S'assurer d'être dans le projet web.
--   Ouvrir le terminal dans VS Code avec une de ces deux méthodes :
--   -   `Command` + `Shift` + `P` et écrire "View: Toggle Terminal"
--   -   `Control` + `
--   Ensuite, dans le terminal, écrire: `npm run watch`
-
-\
-Pour arrêter le projet :
-
--   `Control` + `C` (MAC)
+-   -   `npm install`
+-   Lancer l'extension "Live Server" **NE PAS ROULER NPM DEV**
 
 ## Composants Tailwind
 
@@ -33,3 +19,5 @@ Ce projet utilise ces composants tailwind:
 -   [Pied de page](https://flowbite.com/docs/components/footer/#social-media-icons) - Affiché aux bas des pages
 
 -   [Étoiles](https://flowbite.com/docs/components/rating/#rating-with-text) - Affiché dans les cartes de la page d'accueil
+
+-   [Accordéon](https://flowbite.com/docs/components/accordion/#color-options) - Affiché au bas de la page de support (FAQ)

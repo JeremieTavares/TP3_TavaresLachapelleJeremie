@@ -17,22 +17,38 @@
     <meta name="msapplication-navbutton-color" content="#ffffff">
 
     <!-- Favicons -->
-    <link rel="icon" href="./../../../public/images/mimon_logo.png" sizes="32x32">
-    <link rel="icon" href="./../../../public/images/mimon_logo.png" sizes="192x192">
-    <link rel="apple-touch-icon" href="./public/images/mimon_logo.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="./../../../public/icons/maskable_icon_x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./../../../public/icons/maskable_icon_x512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../../../public/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../../../public/icons/favicon-16x16.png">
 
     <!-- Custom styles - Used to load tailwind css and utilities classes -->
     <link rel="stylesheet" href="./../../../public/css/styles.css">
 
     <!-- CDN styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./../../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
 
     <!-- CDN scripts -->
-    <script src="https://kit.fontawesome.com/475ed1ea72.js" crossorigin="anonymous"></script>
+    <script src="./../../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 
     <!-- Custom scripts -->
     <script defer src="./../../../public/js/main.js"></script>
     <script defer src="./../../../public/js/views/job-form.js"></script>
+
+    <!-- PWA -->
+    <link rel="manifest" href="./../../../manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./../../../service-worker.js')
+                    .then((registration) => {
+                        console.log('[ServiceWorker] registered with scope:', registration.scope);
+                    }).catch((err) => {
+                        console.log('[ServiceWorker] registration failed:', err);
+                    });
+            });
+        }
+    </script>
 </head>
 
 <body class="relative bg-white">
@@ -40,20 +56,32 @@
     <a href="#main-content" class="skip-to-main-link">Aller au contenu principal</a>
 
     <header>
+        <!-- Start main navbar -->
         <nav
             class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="./../../../index.html" class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
                     <img src="./../../../public/images/mimon_logo.png" class="h-12" alt="Mimon logo">
                     <span
-                        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-gray-700">Mimon</span>
+                        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-gray-700 hidden md:inline">
+                        Mimon
+                    </span>
                 </a>
-                <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <div class="flex md:order-2 space-x-3 rtl:space-x-reverse">
+                    <!-- Install PWA Button -->
+                    <button id="installPWAButton"
+                        class="text-[17px] font-light border text-black border-black hover:bg-black hover:text-white hover:cursor-pointer py-2 pl-3 pr-3 rounded-full transition-all hover:scale-[.99]">
+                        <i class="fa-solid fa-circle-down"></i>
+                        Installer
+                    </button>
+                    <!-- Login Button -->
                     <button type="button"
                         class="text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 focus:ring-4 focus:outline-none font-medium rounded-full text-md px-4 py-3 text-center">
-                        Connexion</button>
+                        Connexion
+                    </button>
+                    <!-- Mobile menu Button -->
                     <button data-collapse-toggle="navbar-sticky" type="button"
-                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                         aria-controls="navbar-sticky" aria-expanded="false">
                         <span class="sr-only">Ouvrir le menu principal</span>
                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -69,34 +97,46 @@
                         <li>
                             <a href="./../../../index.html"
                                 class=" block py-2 px-3 text-gray-700 transition-all  hover:text-red hover:bg-gray-100 rounded-full cursor-pointer"
-                                aria-current="page"><i class="fa-regular fa-building min-w-[1.3rem] md:min-w-min"></i>
-                                Accueil</a>
+                                aria-current="page">
+                                <i class="fa-solid fa-house min-w-[1.3rem] md:min-w-min"></i>
+                                Accueil
+                            </a>
                         </li>
                         <li>
                             <a href="./career.html"
-                                class="block py-2 px-3 text-gray-700 transition-all  hover:text-red hover:bg-gray-100 rounded-full cursor-pointer">
-                                <i class=" fa-regular fa-comments min-w-[1.3rem] md:min-w-min"></i>
-                                Carrière</a>
+                                class="block py-2 px-3 text-red transition-all bg-gray-100 hover:text-red hover:bg-gray-100 rounded-full cursor-pointer">
+                                <i class="fa-solid fa-laptop-code min-w-[1.3rem] md:min-w-min"></i>
+                                Carrière
+                            </a>
                         </li>
                         <li>
-                            <a href="#main-content"
-                                class="block py-2 px-3 text-red transition-all bg-gray-100 rounded-full cursor-pointer">
-                                <i class="fa-regular fa-life-ring min-w-[1.3rem] md:min-w-min"></i>
-                                Support</a>
+                            <a href="./../support.html"
+                                class="block py-2 px-3 text-gray-700 transition-all rounded-full cursor-pointer">
+                                <i class="fa-solid fa-life-ring min-w-[1.3rem] md:min-w-min"></i>
+                                Support
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <!-- End main navbar -->
     </header>
 
     <main id="main-content">
-        <section class="py-20 bg-gray-50">
-            <div class="bg-gray-100 px-5 text-center py-20">
+
+        <!-- Start hero section -->
+        <section class="bg-gray-100 mt-20">
+            <div class="container mx-auto px-5 text-center py-20">
                 <h1 class="text-4xl font-bold text-gray-900 w-full">Ingénieur Backend - Solutions</h1>
             </div>
-            <div class="container mx-auto px-5 mt-20">
-                <!-- About Mimon -->
+        </section>
+
+        <!-- Start job description -->
+        <div class="bg-gray-50">
+            <div class="container mx-auto px-5 py-20">
+
+                <!-- Card About Mimon -->
                 <article class="bg-white p-8 rounded-lg shadow-sm mb-8">
                     <h2 class="text-2xl font-semibold text-gray-700 mb-4">À propos de Mimon</h2>
                     <p class="text-gray-700 font-light">
@@ -112,7 +152,7 @@
                     </p>
                 </article>
 
-                <!-- The Team You Will Join -->
+                <!-- Card The Team You Will Join -->
                 <article class="bg-white p-8 rounded-lg shadow-sm mb-8">
                     <h2 class="text-2xl font-semibold text-gray-700 mb-4">L'équipe que vous rejoindrez</h2>
                     <p class="text-gray-700 font-light">
@@ -139,7 +179,7 @@
                     </p>
                 </article>
 
-                <!-- The Impact You Will Make -->
+                <!-- Card The Impact You Will Make -->
                 <article class="bg-white p-8 rounded-lg shadow-sm mb-8">
                     <h2 class="text-2xl font-semibold text-gray-700 mb-4">L'impact que vous aurez</h2>
                     <p class="text-gray-700 font-light mb-4">
@@ -174,7 +214,7 @@
                     </ul>
                 </article>
 
-                <!-- Technologies We Use -->
+                <!-- Card Technologies We Use -->
                 <article class="bg-white p-8 rounded-lg shadow-sm mb-8">
                     <h2 class="text-2xl font-semibold text-gray-700 mb-4">Technologies que nous utilisons</h2>
                     <p class="text-gray-700 font-light">
@@ -200,8 +240,7 @@
                     </ul>
                 </article>
 
-
-                <!-- Your Expertise -->
+                <!-- Card Your Expertise -->
                 <article class="bg-white p-8 rounded-lg shadow-sm mb-8">
                     <h2 class="text-2xl font-semibold text-gray-700 mb-4">Votre expertise</h2>
                     <p class="text-gray-700 font-light mb-4">
@@ -216,10 +255,9 @@
                         </li>
                         <li>Expérience dans la création et la maintenance d'APIs robustes et sécurisées.</li>
                         <li>Exposition à des architectures de logiciels à grande échelle, telles que des microservices,
-                            des
-                            pipelines de données à haut volume, et des systèmes distribués.</li>
-                        <li>Compréhension approfondie des meilleures pratiques de sécurité, de performance, et de
-                            scalabilité.
+                            des pipelines de données à haut volume, et des systèmes distribués.</li>
+                        <li>Compréhension approfondie des meilleures pratiques
+                            de sécurité, de performance, et de scalabilité.
                         </li>
                         <li>Capacité à travailler en équipe et à collaborer avec des équipes multidisciplinaires.</li>
                         <li>Un esprit analytique avec une approche rigoureuse de la résolution de problèmes complexes.
@@ -227,7 +265,7 @@
                     </ul>
                 </article>
 
-                <!-- Benefits -->
+                <!-- Card Benefits -->
                 <article class="bg-white p-8 rounded-lg shadow-sm mb-8">
                     <h2 class="text-2xl font-semibold text-gray-700 mb-4">Avantages</h2>
                     <ul class="list-disc pl-6 text-gray-600 font-light">
@@ -258,20 +296,25 @@
                     </button>
                 </div>
             </div>
-        </section>
+        </div>
+        <!-- End job description -->
 
 
+        <!-- Start Job Form Section -->
         <section>
             <!-- hidden form - Toggled by Javascript and eplaced by a success alert on submission -->
             <div class="container mx-auto px-5">
                 <div id="applyForm" class="hidden my-12">
                     <form id="jobApplicationForm" class="bg-white p-8 rounded-lg shadow-md border-t border-t-gray-100"
-                        novalidate>
+                        novalidate method="post" enctype="multipart/form-data" action="javascript:void(0)">
+
+                        <!-- Start Form 1st Section (Personnal infos) -->
                         <hgroup class="mb-8">
                             <h4 class="text-lg text-gray-700">A propos de vous</h4>
                             <p class="text-sm font-light text-gray-500">Quelques informations de bases</p>
                         </hgroup>
                         <div class="space-y-4">
+                            <!-- Start Form group (First & Last name) -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <div class="relative">
@@ -279,8 +322,9 @@
                                             class="block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent rounded-lg border border-gray-300 focus:outline-none focus:ring-0 peer"
                                             placeholder=" ">
                                         <label for="firstName"
-                                            class="absolute text-gray-500  duration-200 transform-translate-y-4 scale-75 -top-3 left-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:left-2 peer-focus:-translate-y-5">
-                                            Prénom<sup class="text-red-400">*</sup></label>
+                                            class="absolute text-gray-500 duration-200 transform-translate-y-4 scale-75 -top-3 left-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:left-2 peer-focus:-translate-y-5">
+                                            Prénom<sup class="text-red-400">*</sup>
+                                        </label>
                                     </div>
                                     <span class="text-red-500 text-sm font-light hidden" id="firstNameError"></span>
                                 </div>
@@ -291,26 +335,30 @@
                                             class="block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent rounded-lg border border-gray-300 focus:outline-none focus:ring-0 peer"
                                             placeholder=" ">
                                         <label for="lastName"
-                                            class="absolute text-gray-500  duration-200 transform-translate-y-4 scale-75 -top-3 left-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:left-2 peer-focus:-translate-y-5">
-                                            Nom<sup class="text-red-400">*</sup></label>
+                                            class="absolute text-gray-500 duration-200 transform-translate-y-4 scale-75 -top-3 left-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:left-2 peer-focus:-translate-y-5">
+                                            Nom<sup class="text-red-400">*</sup>
+                                        </label>
                                     </div>
                                     <span class="text-red-500 text-sm font-light hidden" id="lastNameError"></span>
                                 </div>
-
                             </div>
+                            <!-- End Form group (First & Last name) -->
 
+                            <!-- Email -->
                             <div>
                                 <div class="relative">
                                     <input type="email" id="email" name="email" autocomplete="email"
                                         class="block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent rounded-lg border border-gray-300 focus:outline-none focus:ring-0 peer"
                                         placeholder=" ">
                                     <label for="email"
-                                        class="absolute text-gray-500  duration-200 transform-translate-y-4 scale-75 -top-3 left-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:left-2 peer-focus:-translate-y-5">
-                                        Courriel<sup class="text-red-400">*</sup></label>
+                                        class="absolute text-gray-500 duration-200 transform-translate-y-4 scale-75 -top-3 left-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:left-2 peer-focus:-translate-y-5">
+                                        Courriel<sup class="text-red-400">*</sup>
+                                    </label>
                                 </div>
                                 <span class="text-red-500 text-sm font-light hidden" id="emailError"></span>
                             </div>
 
+                            <!-- Phone -->
                             <div>
                                 <div class="relative">
                                     <input type="tel" id="phone" name="phone" autocomplete="tel"
@@ -318,124 +366,143 @@
                                         placeholder=" ">
                                     <label for="phone"
                                         class="absolute text-gray-500 duration-200 transform-translate-y-4 scale-75 -top-3 left-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:left-2 peer-focus:-translate-y-5">
-                                        Téléphone<sup class="text-red-400">*</sup></label>
+                                        Téléphone<sup class="text-red-400">*</sup>
+                                    </label>
                                 </div>
                                 <span class="text-red-500 text-sm font-light hidden" id="phoneError"></span>
                             </div>
 
+                            <!-- Country -->
                             <div>
                                 <div class="relative">
                                     <input type="text" id="country" name="country" autocomplete="country"
                                         class="block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent rounded-lg border border-gray-300 focus:outline-none focus:ring-0 peer"
                                         placeholder=" ">
                                     <label for="country"
-                                        class="absolute text-gray-500  duration-200 transform-translate-y-4 scale-75 -top-3 left-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:left-2 peer-focus:-translate-y-5">
-                                        Pays de résidence<sup class="text-red-400">*</sup></label>
+                                        class="absolute text-gray-500 duration-200 transform-translate-y-4 scale-75 -top-3 left-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:left-2 peer-focus:-translate-y-5">
+                                        Pays de résidence<sup class="text-red-400">*</sup>
+                                    </label>
                                 </div>
                                 <span class="text-red-500 text-sm font-light hidden" id="countryError"></span>
                             </div>
                         </div>
+                        <!-- End Form 1st Section (Personnal infos) -->
+
 
                         <!-- separation between info and files -->
                         <div class="mx-auto py-12">
                             <hr class="w-3/4 md:w-1/2 mx-auto">
                         </div>
 
-                        <hgroup class="mb-8">
-                            <h4 class="text-lg text-gray-700">Documents requis</h4>
-                            <p class="text-sm font-light text-gray-500">Pour mieux vous connaitre</p>
-                        </hgroup>
-
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                            <!-- CV Upload -->
-                            <div class="w-full mx-auto">
-                                <label class="text-base text-gray-500 font-semibold mb-2 block ml-1" for="resume">CV
-                                    <span class="text-sm text-gray-500 font-light">(PDF, DOC, DOCX et TXT)<sup
-                                            class="text-red-400">*</sup></span></label>
-                                <div id="resumeUploadDropzone"
-                                    class="dropzone flex items-center justify-center w-full border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-50 cursor-pointer">
-                                    <i class="fa-solid fa-cloud-arrow-up mr-2"></i>
-                                    <span id="resumeFilename" class="text-gray-400">Glissez et déposez votre CV ici ou
-                                        cliquez pour
-                                        sélectionner un fichier</span>
-                                </div>
-                                <input type="file" id="resume" name="resume" class="hidden"
-                                    accept=".pdf,.doc,.docx,.txt">
-                                <span class="text-red-500 text-sm font-light hidden" id="resumeError"></span>
-                            </div>
-
-                            <!-- Motivation Letter Upload -->
-                            <div class="w-full mx-auto mt-4 md:mt-0">
-                                <label class="text-base text-gray-500 font-semibold mb-2 block ml-1"
-                                    for="motivationLetter">Lettre de motivation
-                                    <span class="text-sm text-gray-500 font-light">(PDF, DOC, DOCX et TXT)<sup
-                                            class="text-red-400">*</sup></span></label>
-                                <div id="motivationLetterUploadDropzone"
-                                    class="dropzone flex items-center justify-center w-full border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-50 cursor-pointer">
-                                    <i class="fa-solid fa-cloud-arrow-up mr-2"></i>
-                                    <span id="motivationLetterFilename" class="text-gray-400">Glissez et déposez votre
-                                        lettre
-                                        ici ou cliquez pour
-                                        sélectionner un fichier</span>
-                                </div>
-                                <input type="file" id="motivationLetter" name="motivationLetter" class="hidden"
-                                    accept=".pdf,.doc,.docx,.txt">
-                                <span class="text-red-500 text-sm font-light hidden" id="motivationLetterError"></span>
-                            </div>
-                        </div>
-
-                        <!-- separation between info and files -->
-                        <div class="mx-auto py-12">
-                            <hr class="w-3/4 md:w-1/2 mx-auto">
-                        </div>
-
-                        <hgroup class="mb-8">
-                            <h4 class="text-lg text-gray-700">Conditions</h4>
-                            <p class="text-sm font-light text-gray-500">Gestion de vos informations personnels</p>
-                        </hgroup>
-
-                        <div
-                            class="max-h-52 overflow-y-auto p-4 border border-gray-300 rounded-lg text-gray-700 font-light">
-                            <p>
-                                En soumettant votre candidature, vous acceptez que toutes les informations fournies,
-                                y compris votre CV,
-                                soient conservées en interne pour une période de six mois. Durant cette période,
-                                nous nous réservons le
-                                droit
-                                de vous contacter pour des opportunités d'emploi similaires ou au sein du même
-                                département, même si elles ne
-                                correspondent pas spécifiquement au poste pour lequel vous avez postulé.
-                            </p>
-                            <p class="mt-4">
-                                Sachez que vos données ne seront en aucun cas partagées avec des tiers ni utilisées
-                                à des fins de promotion,
-                                de divulgation ou autres activités non liées au recrutement. Si vous souhaitez que
-                                vos informations soient
-                                supprimées de nos dossiers avant la fin de la période de conservation, vous pouvez
-                                en faire la demande en
-                                nous écrivant à <a href="mailto:hr-privacy@mimon.com"
-                                    class="hover:underline cursor-pointer">hr-privacy@mimon.com</a>. Nous nous
-                                engageons à traiter votre demande de
-                                suppression dans un délai
-                                de
-                                30 jours suivant sa réception.
-                            </p>
-                        </div>
-
+                        <!-- Start Form 2nd Section (Files, Resume and Motivation letter) -->
                         <div>
-                            <div class="flex items-center mt-8">
-                                <input id="terms" name="terms" type="checkbox" value="1"
-                                    class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded-md focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="terms"
-                                    class="ms-2 text-sm font-light text-gray-900 dark:text-gray-300">J'accepte
-                                    les
-                                    <a href="#" class="text-blue-600">conditions d'utilisation</a>
-                                    et la
-                                    <a href="#" class="text-blue-600">politique de confidentialité</a> de Mimon.<sup
-                                        class="text-red-400">*</sup></label>
+                            <hgroup class="mb-8">
+                                <h4 class="text-lg text-gray-700">Documents requis</h4>
+                                <p class="text-sm font-light text-gray-500">Pour mieux vous connaitre</p>
+                            </hgroup>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                <!-- CV Upload -->
+                                <div class="w-full mx-auto">
+                                    <label class="text-base text-gray-500 font-semibold mb-2 block ml-1 cursor-pointer"
+                                        for="resume">
+                                        CV
+                                        <span class="text-sm text-gray-500 font-light">
+                                            (PDF, DOC, DOCX et TXT)<sup class="text-red-400">*</sup>
+                                        </span>
+                                    </label>
+                                    <div id="resumeUploadDropzone"
+                                        class="dropzone flex items-center justify-center w-full border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-50 cursor-pointer">
+                                        <i class="fa-solid fa-cloud-arrow-up mr-2"></i>
+                                        <span id="resumeFilename" class="text-gray-400">
+                                            Glissez et déposez votre CV ici ou cliquez pour sélectionner un fichier
+                                        </span>
+                                    </div>
+                                    <input type="file" id="resume" name="resume" class="hidden"
+                                        accept=".pdf,.doc,.docx,.txt">
+                                    <span class="text-red-500 text-sm font-light hidden" id="resumeError"></span>
+                                </div>
+
+                                <!-- Motivation Letter Upload -->
+                                <div class="w-full mx-auto mt-4 md:mt-0">
+                                    <label class="text-base text-gray-500 font-semibold mb-2 block ml-1 cursor-pointer"
+                                        for="motivationLetter">Lettre de motivation
+                                        <span class="text-sm text-gray-500 font-light">
+                                            (PDF, DOC, DOCX et TXT)<sup class="text-red-400">*</sup>
+                                        </span>
+                                    </label>
+                                    <div id="motivationLetterUploadDropzone"
+                                        class="dropzone flex items-center justify-center w-full border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-50 cursor-pointer">
+                                        <i class="fa-solid fa-cloud-arrow-up mr-2"></i>
+                                        <span id="motivationLetterFilename" class="text-gray-400">
+                                            Glissez et déposez votre lettre ici ou cliquez pour sélectionner un fichier
+                                        </span>
+                                    </div>
+                                    <input type="file" id="motivationLetter" name="motivationLetter" class="hidden"
+                                        accept=".pdf,.doc,.docx,.txt">
+                                    <span class="text-red-500 text-sm font-light hidden" id="motivationLetterError">
+                                    </span>
+                                </div>
                             </div>
-                            <span class="text-red-500 text-sm font-light hidden" id="termsError"></span>
                         </div>
+                        <!-- End Form 2nd Section (Files, Resume and Motivation letter) -->
+
+
+                        <!-- separation between info and files -->
+                        <div class="mx-auto py-12">
+                            <hr class="w-3/4 md:w-1/2 mx-auto">
+                        </div>
+
+                        <!-- Start Form 3rd Section (Conditions) -->
+                        <div>
+                            <hgroup class="mb-8">
+                                <h4 class="text-lg text-gray-700">Conditions</h4>
+                                <p class="text-sm font-light text-gray-500">Gestion de vos informations personnels</p>
+                            </hgroup>
+
+                            <!-- Conditions descriptions -->
+                            <div
+                                class="max-h-52 overflow-y-auto p-4 border border-gray-300 rounded-lg text-gray-700 font-light">
+                                <p>
+                                    En soumettant votre candidature, vous acceptez que toutes les informations fournies,
+                                    y compris votre CV, soient conservées en interne pour une période de six mois.
+                                    Durant cette période, nous nous réservons le droit de vous contacter pour des
+                                    opportunités d'emploi similaires ou au sein du même département, même si elles ne
+                                    correspondent pas spécifiquement au poste pour lequel vous avez postulé.
+                                </p>
+                                <p class="mt-4">Sachez que vos données ne seront en aucun cas partagées avec des tiers
+                                    ni utilisées à des fins de promotion, de divulgation ou autres activités non liées
+                                    au recrutement. Si vous souhaitez que vos informations soient supprimées de nos
+                                    dossiers avant la fin de la période de conservation, vous pouvez en faire la demande
+                                    en nous écrivant à
+                                    <a href="mailto:hr-privacy@mimon.com" class="hover:underline cursor-pointer">
+                                        hr-privacy@mimon.com
+                                    </a>.
+                                    Nous nous engageons à traiter votre demande de suppression dans un délai de 30 jours
+                                    suivant sa réception.
+                                </p>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center mt-8">
+                                    <input id="terms" name="terms" type="checkbox" value="1"
+                                        class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded-md focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2">
+                                    <label for="terms"
+                                        class="ms-2 text-sm font-light text-gray-900 dark:text-gray-300 cursor-pointer">
+                                        J'accepte les
+                                        <a href="#" class="text-blue-600">
+                                            conditions d'utilisation
+                                        </a>
+                                        et la
+                                        <a href="#" class="text-blue-600">
+                                            politique de confidentialité
+                                        </a> de Mimon.<sup class="text-red-400">*</sup>
+                                    </label>
+                                </div>
+                                <span class="text-red-500 text-sm font-light hidden" id="termsError"></span>
+                            </div>
+                        </div>
+                        <!-- End Form 3rd Section (Conditions) -->
 
                         <button id="sendApplication"
                             class="mt-12 text-[17px] font-light border bg-red text-white hover:cursor-pointer py-2 pl-3 pr-3 rounded-full transition-all hover:scale-[.99]">
@@ -445,6 +512,8 @@
                 </div>
             </div>
         </section>
+        <!-- End Job Form Section -->
+
     </main>
 
     <footer class="bg-slate-100 dark:bg-gray-900">
@@ -463,12 +532,14 @@
                             <li class="mb-4">
                                 <a href="./career.html"
                                     class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
-                                    Carrière</a>
+                                    Carrière
+                                </a>
                             </li>
                             <li>
-                                <a href="./support.html"
+                                <a href="./../support.html"
                                     class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Centre
-                                    d'aide</a>
+                                    d'aide
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -477,11 +548,15 @@
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
                                 <a href="https://facebook.com" target="_blank" rel="noopener"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Facebook</a>
+                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+                                    Facebook
+                                </a>
                             </li>
                             <li>
                                 <a href="https://x.com/?lang=fr" target="_blank" rel="noopener"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Twitter</a>
+                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+                                    Twitter
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -490,15 +565,15 @@
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
                                 <a href="#"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Politique
-                                    de
-                                    confidentialité</a>
+                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+                                    Politique de confidentialité
+                                </a>
                             </li>
                             <li>
                                 <a href="#"
-                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Termes
-                                    et
-                                    conditions</a>
+                                    class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+                                    Termes et conditions
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -528,9 +603,8 @@
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
             <div class="grid grid-cols-12">
-                <span class="text-sm text-start text-gray-500 dark:text-gray-400 col-span-10">© 2024 Mimon - Tous
-                    droits
-                    réservés.
+                <span class="text-sm text-start text-gray-500 dark:text-gray-400 col-span-10">
+                    © 2024 Mimon - Tous droits réservés.
                 </span>
                 <div class="flex justify-end items-center col-span-2 mr-2 lg:mr-6">
                     <a href="https://facebook.com" target="_blank" rel="noopener"

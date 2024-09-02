@@ -1,0 +1,1 @@
+(()=>{"use strict";document.addEventListener("scroll",(function(){var t=window.scrollY;document.getElementById("parallax-image").setAttribute("y",(.1*t).toString())}))})();

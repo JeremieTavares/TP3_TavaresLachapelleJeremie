@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -17,21 +17,39 @@
 	<meta name="msapplication-navbutton-color" content="#ffffff">
 
 	<!-- Favicons -->
-	<link rel="icon" href="./../../public/images/mimon_logo.png" sizes="32x32">
-	<link rel="icon" href="./../../public/images/mimon_logo.png" sizes="192x192">
-	<link rel="apple-touch-icon" href="./public/images/mimon_logo.png">
+	<link rel="apple-touch-icon" sizes="512x512" href="./../../public/icons/maskable_icon_x512.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="./../../public/icons/maskable_icon_x512.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./../../public/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./../../public/icons/favicon-16x16.png">
 
 	<!-- Custom styles - Used to load tailwind css and utilities classes -->
 	<link rel="stylesheet" href="./../../public/css/styles.css">
 
 	<!-- CDN styles -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
 
 	<!-- CDN scripts -->
-	<script src="https://kit.fontawesome.com/475ed1ea72.js" crossorigin="anonymous"></script>
+	<script src="./../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 
 	<!-- Custom scripts -->
 	<script defer src="./../../public/js/main.js"></script>
+
+	<!-- PWA -->
+	<link rel="manifest" href="./../../manifest.json">
+	<script>
+		if ("serviceWorker" in navigator) {
+			window.addEventListener("load", () => {
+				navigator.serviceWorker
+					.register("./../../service-worker.js")
+					.then((registration) => {
+						console.log("[ServiceWorker] registered with scope:", registration.scope);
+					})
+					.catch((err) => {
+						console.log("[ServiceWorker] registration failed:", err);
+					});
+			});
+		}
+	</script>
 </head>
 
 <body class="relative bg-white">
@@ -39,20 +57,31 @@
 	<a href="#main-content" class="skip-to-main-link">Aller au contenu principal</a>
 
 	<header>
-		<nav
-			class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+		<!-- Start main navbar -->
+		<nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
 			<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 				<a href="./../../index.html" class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
 					<img src="./../../public/images/mimon_logo.png" class="h-12" alt="Mimon logo">
 					<span
-						class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-gray-700">Mimon</span>
+						class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-gray-700 hidden md:inline">
+						Mimon
+					</span>
 				</a>
-				<div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+				<div class="flex md:order-2 space-x-3 rtl:space-x-reverse">
+					<!-- Install PWA Button -->
+					<button id="installPWAButton"
+						class="text-[17px] font-light border text-black border-black hover:bg-black hover:text-white hover:cursor-pointer py-2 pl-3 pr-3 rounded-full transition-all hover:scale-[.99]">
+						<i class="fa-solid fa-circle-down"></i>
+						Installer
+					</button>
+					<!-- Login Button -->
 					<button type="button"
 						class="text-white bg-red transition-all hover:scale-[.99] hover:bg-rose-600 focus:ring-4 focus:outline-none font-medium rounded-full text-md px-4 py-3 text-center">
-						Connexion</button>
+						Connexion
+					</button>
+					<!-- Mobile menu Button -->
 					<button data-collapse-toggle="navbar-sticky" type="button"
-						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
 						aria-controls="navbar-sticky" aria-expanded="false">
 						<span class="sr-only">Ouvrir le menu principal</span>
 						<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -64,86 +93,489 @@
 				</div>
 				<div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
 					<ul
-						class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+						class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md">
 						<li>
 							<a href="./../../index.html"
-								class=" block py-2 px-3 text-gray-700 transition-all  hover:text-red hover:bg-gray-100 rounded-full cursor-pointer"
-								aria-current="page"><i class="fa-regular fa-building min-w-[1.3rem] md:min-w-min"></i>
-								Accueil</a>
+								class="block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer"
+								aria-current="page">
+								<i class="fa-solid fa-house min-w-[1.3rem] md:min-w-min"></i>
+								Accueil
+							</a>
 						</li>
 						<li>
 							<a href="./jobs/career.html"
-								class="block py-2 px-3 text-gray-700 transition-all  hover:text-red hover:bg-gray-100 rounded-full cursor-pointer">
-								<i class=" fa-regular fa-comments min-w-[1.3rem] md:min-w-min"></i>
-								Carrière</a>
+								class="block py-2 px-3 text-gray-700 transition-all hover:text-red hover:bg-gray-100 rounded-full cursor-pointer">
+								<i class="fa-solid fa-laptop-code min-w-[1.3rem] md:min-w-min"></i>
+								Carrière
+							</a>
 						</li>
 						<li>
 							<a href="#main-content"
 								class="block py-2 px-3 text-red transition-all bg-gray-100 rounded-full cursor-pointer">
-								<i class="fa-regular fa-life-ring min-w-[1.3rem] md:min-w-min"></i>
-								Support</a>
+								<i class="fa-solid fa-life-ring min-w-[1.3rem] md:min-w-min"></i>
+								Support
+							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
+		<!-- End main navbar -->
 	</header>
+
 	<main id="main-content">
+
+		<!-- Start hero section -->
+		<section class="mt-20">
+			<div class="bg-call-center h-[600px] md:bg-fixed bg-bottom bg-no-repeat bg-cover">
+				<div class="bg-[#0000009f] h-full">
+					<div class="container mx-auto px-4 h-full">
+						<div
+							class="max-w-4xl text-center mx-auto h-full flex flex-col justify-center items-center py-12">
+							<h1 class="text-5xl text-white font-bold mb-12 text-center">Centre d'aide</h1>
+							<!-- hidden on mobile -->
+							<span class="font-light text-xl text-white hidden md:inline">
+								Vous avez des questions? Plusieurs options s'offrent à vous pour nous rejoindre :
+								que ce soit par téléphone, courriel, ou clavardage en direct, notre équipe est là
+								pour vous aider à répondre à toutes vos interrogations.
+							</span>
+							<span class="font-light text-xl text-white mb-8">Sachez que bon nombre de réponses peuvent
+								déjà se trouver dans notre foire aux
+								questions. Nous vous invitons à y jeter un coup d'œil. Si aucune de vos questions
+								n'y trouve réponse, n'hésitez pas à nous contacter directement.
+							</span>
+							<a href="#joinUs"
+								class="inline-block mt-12 md:mt-20 text-[17px] font-light text-white bg-red hover:cursor-pointer py-3 px-4 rounded-full transition-all hover:scale-[.99]">
+								Nous joindre directement
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End hero section -->
+
+		<!-- Start Q&A -->
+		<section class="py-12 bg-gray-50">
+			<div class="container mx-auto px-4">
+				<hgroup>
+					<h2 class="text-3xl font-bold mb-8 text-center text-gray-700">Questions Fréquentes</h2>
+					<p class="font-light text-lg text-gray-500 mt-8">
+						Avez-vous une question différente et ne trouvez pas la réponse que vous cherchez ? Contactez
+						notre équipe de support en nous
+						<a href="mailto:support@mimon.com" class="text-red font-normal hover:cursor-pointer">
+							envoyant un courriel
+						</a> et nous vous répondrons dès que possible.
+					</p>
+				</hgroup>
+				<div class="my-8">
+					<h3 class="text-2xl font-semibold my-4 text-gray-700">Questions Relatives aux Comptes</h3>
+
+					<!-- Q&A Wrapper -->
+					<div id="accordion-color" data-accordion="collapse"
+						data-active-classes="bg-red-100 text-red dark:text-white" class="mb-12">
+						<!-- Start Q&A Account -->
+						<!-- Q&A Account - 1 -->
+						<h2 id="accordion-color-heading-1">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-1" aria-expanded="true"
+								aria-controls="accordion-color-body-1">
+								<span>Comment réinitialiser mon mot de passe?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-1" class="hidden" aria-labelledby="accordion-color-heading-1">
+							<div class="p-5 border border-b-0 border-gray-200 bg-gray-50">
+								<p class="mb-2 text-gray-500">
+									Pour réinitialiser votre mot de passe, cliquez sur "Mot de passe oublié" sur la
+									page de connexion et suivez les instructions.
+								</p>
+							</div>
+						</div>
+
+						<!-- Q&A Account - 2 -->
+						<h2 id="accordion-color-heading-2">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-2" aria-expanded="false"
+								aria-controls="accordion-color-body-2">
+								<span>Comment mettre à jour mes informations personnelles?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-2" class="hidden" aria-labelledby="accordion-color-heading-2">
+							<div class="p-5 border border-b-0 border-gray-200 bg-gray-50">
+								<p class="mb-2 text-gray-500">
+									Vous pouvez mettre à jour vos informations personnelles en accédant à votre
+									profil, puis en cliquant sur "Modifier".
+								</p>
+							</div>
+						</div>
+
+						<!-- Q&A Account - 3 -->
+						<h2 id="accordion-color-heading-3">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-3" aria-expanded="false"
+								aria-controls="accordion-color-body-3">
+								<span>Que faire si je ne reçois pas de courriel de confirmation?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-3" class="hidden" aria-labelledby="accordion-color-heading-3">
+							<div class="p-5 border border-t-0 border-gray-200">
+								<p class="mb-2 text-gray-500">
+									Si vous ne recevez pas de courriel de confirmation, vérifiez votre dossier de
+									spam ou demandez à renvoyer le courriel.
+								</p>
+							</div>
+						</div>
+
+						<!-- Q&A Account - 4 -->
+						<h2 id="accordion-color-heading-4">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-4" aria-expanded="false"
+								aria-controls="accordion-color-body-4">
+								<span>Comment supprimer mon compte?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-4" class="hidden" aria-labelledby="accordion-color-heading-4">
+							<div class="p-5 border border-t-0 border-gray-200">
+								<p class="mb-2 text-gray-500">
+									Pour supprimer votre compte, allez dans les paramètres de votre compte et
+									sélectionnez l'option "Supprimer le compte".
+								</p>
+							</div>
+						</div>
+						<!-- End Q&A Account -->
+
+						<!-- Start Q&A Host -->
+						<h3 class="text-2xl font-semibold mb-4 mt-12 text-gray-700">
+							Questions Relatives aux Hôtes
+						</h3>
+						<!-- Q&A Host - 1 -->
+						<h2 id="accordion-color-heading-5">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-5" aria-expanded="false"
+								aria-controls="accordion-color-body-5">
+								<span>Comment puis-je devenir hôte?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-5" class="hidden" aria-labelledby="accordion-color-heading-5">
+							<div class="p-5 border border-b-0 border-gray-200 bg-gray-50">
+								<p class="mb-2 text-gray-500">
+									Pour devenir hôte, cliquez sur "Connexion" en haut à droite de la page d'accueil
+									et suivez les instructions pour devenir un hôte.
+								</p>
+							</div>
+						</div>
+
+						<!-- Q&A Host - 2 -->
+						<h2 id="accordion-color-heading-6">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-6" aria-expanded="false"
+								aria-controls="accordion-color-body-6">
+								<span>Comment puis-je améliorer la visibilité de mon annonce?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-6" class="hidden" aria-labelledby="accordion-color-heading-6">
+							<div class="p-5 border border-b-0 border-gray-200 bg-gray-50">
+								<p class="mb-2 text-gray-500">
+									Pour améliorer la visibilité de votre annonce, assurez-vous qu'elle est bien
+									rédigée, avec des photos de qualité, et que les tarifs sont compétitifs. Vous
+									pouvez aussi activer la promotion de l'annonce pour une meilleure visibilité.
+								</p>
+							</div>
+						</div>
+
+						<!-- Q&A Host - 3 -->
+						<h2 id="accordion-color-heading-7">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-7" aria-expanded="false"
+								aria-controls="accordion-color-body-7">
+								<span>Que faire en cas d'annulation par le voyageur?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-7" class="hidden" aria-labelledby="accordion-color-heading-7">
+							<div class="p-5 border border-t-0 border-gray-200">
+								<p class="mb-2 text-gray-500">
+									En cas d'annulation par le voyageur, vous pouvez consulter les conditions
+									d'annulation que vous avez définies. Si l'annulation ne respecte pas ces
+									conditions, vous pourriez avoir droit à une compensation.
+								</p>
+							</div>
+						</div>
+
+						<!-- Q&A Host - 4 -->
+						<h2 id="accordion-color-heading-8">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-8" aria-expanded="false"
+								aria-controls="accordion-color-body-8">
+								<span>Quels sont les critères pour devenir Superhost?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-8" class="hidden" aria-labelledby="accordion-color-heading-8">
+							<div class="p-5 border border-t-0 border-gray-200">
+								<p class="mb-2 text-gray-500">
+									Pour devenir Superhost, vous devez maintenir un taux de réponse élevé, recevoir
+									des évaluations 5 étoiles sur 80% de vos séjours et ne pas annuler de
+									réservations de manière injustifiée.
+								</p>
+							</div>
+						</div>
+
+						<!-- Start Q&A Traveler -->
+						<h3 class="text-2xl font-semibold mb-4 mt-12 text-gray-700">
+							Questions Relatives à l'Hébergement (Voyageur)
+						</h3>
+						<!-- Q&A Travaler - 1 -->
+						<h2 id="accordion-color-heading-9">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-9" aria-expanded="false"
+								aria-controls="accordion-color-body-9">
+								<span>Comment contacter un hôte avant de réserver?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-9" class="hidden" aria-labelledby="accordion-color-heading-9">
+							<div class="p-5 border border-b-0 border-gray-200 bg-gray-50">
+								<p class="mb-2 text-gray-500">
+									Vous pouvez contacter un hôte en utilisant le bouton "Contacter l'hôte" sur la
+									page de l'annonce avant de finaliser votre réservation.
+								</p>
+							</div>
+						</div>
+
+						<!-- Q&A Travaler - 2 -->
+						<h2 id="accordion-color-heading-10">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-10" aria-expanded="false"
+								aria-controls="accordion-color-body-10">
+								<span>Que faire si mon hôte annule ma réservation?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-10" class="hidden" aria-labelledby="accordion-color-heading-10">
+							<div class="p-5 border border-b-0 border-gray-200 bg-gray-50">
+								<p class="mb-2 text-gray-500">
+									Si votre hôte annule votre réservation, vous recevrez un remboursement complet.
+									Vous pouvez également réserver un autre logement disponible sur la plateforme.
+								</p>
+							</div>
+						</div>
+
+						<!-- Q&A Travaler - 3 -->
+						<h2 id="accordion-color-heading-11">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-11" aria-expanded="false"
+								aria-controls="accordion-color-body-11">
+								<span>Puis-je modifier une réservation existante?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-11" class="hidden" aria-labelledby="accordion-color-heading-11">
+							<div class="p-5 border border-t-0 border-gray-200">
+								<p class="mb-2 text-gray-500">
+									Oui, vous pouvez modifier une réservation existante sous certaines conditions.
+									Pour ce faire, accédez à votre réservation dans votre compte et sélectionnez
+									l'option "Modifier la réservation". L'hôte devra approuver les modifications.
+								</p>
+							</div>
+						</div>
+
+						<!-- Q&A Travaler - 4 -->
+						<h2 id="accordion-color-heading-12">
+							<button type="button"
+								class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 hover:bg-red-100 gap-3"
+								data-accordion-target="#accordion-color-body-12" aria-expanded="false"
+								aria-controls="accordion-color-body-12">
+								<span>Quels sont les moyens de paiement acceptés?</span>
+								<svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2" d="M9 5 5 1 1 5" />
+								</svg>
+							</button>
+						</h2>
+						<div id="accordion-color-body-12" class="hidden" aria-labelledby="accordion-color-heading-12">
+							<div class="p-5 border border-t-0 border-gray-200">
+								<p class="mb-2 text-gray-500">
+									Les moyens de paiement acceptés incluent les cartes de crédit, PayPal, et
+									d'autres méthodes locales selon votre pays. Tous les paiements sont sécurisés
+									par notre plateforme.
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- End Q&A Traveler -->
+				</div>
+			</div>
+		</section>
+		<!-- End Q&A section-->
+
+		<!-- Start join us section -->
+		<section class="my-28" id="joinUs">
+			<div class="container mx-auto px-4">
+				<h2 class="text-4xl text-gray-700 font-bold mb-12 text-center">Comment nous joindre</h2>
+				<div class="grid md:grid-cols-3 gap-8">
+					<!-- Phone Card-->
+					<article
+						class="bg-white shadow-lg p-6 rounded-lg text-center relative flex flex-col mt-auto h-full">
+						<i class="fa-solid fa-phone text-6xl text-red"></i>
+						<h3 class="text-2xl font-semibold mb-2 text-gray-700">Téléphone</h3>
+						<p class="mb-2 b-2 font-light text-sm mt-auto">Réponse moyenne : 20 minutes</p>
+						<a href="tel:18887968674" class="mb-2 text-red-500 underline mt-auto cursor-pointer">
+							1-888 796 8674
+						</a>
+						<p class="font-light text-sm">
+							Urgence : <a href="tel:911" class="text-red-500 underline cursor-pointer">911</a>
+						</p>
+					</article>
+					<!-- Email Card -->
+					<article
+						class="bg-white shadow-lg p-6 rounded-lg text-center relative flex flex-col mt-auto h-full">
+						<i class="fa-solid fa-envelope text-6xl text-red"></i>
+						<h3 class="text-2xl font-semibold mb-2 text-gray-700">Courriel</h3>
+						<p class="mb-2 b-2 font-light text-sm mt-auto">Réponse moyenne : 24 heures</p>
+						<p>
+							<a href="mailto:support@mimon.com" class="text-red-500 underline cursor-pointer">
+								support@mimon.com
+							</a>
+						</p>
+					</article>
+					<!-- Live Chat Card -->
+					<article
+						class="bg-white shadow-lg p-6 rounded-lg text-center relative flex flex-col mt-auto h-full">
+						<i class="fa-solid fa-comments text-6xl text-red"></i>
+						<h3 class="text-2xl font-semibold mb-2 text-gray-700">Live Chat</h3>
+						<p class="mb-2 font-light text-sm mt-auto">Réponse moyenne : 5 minutes</p>
+						<p><a href="#" class="text-red-500 underline cursor-pointer">Clavarder en direct</a></p>
+					</article>
+				</div>
+			</div>
+		</section>
+		<!-- End join us section -->
 
 	</main>
 
-	<footer class="bg-slate-100 dark:bg-gray-900">
+	<footer class="bg-slate-100">
 		<div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-16">
 			<div class="md:flex md:justify-between">
 				<div class="mb-6 md:mb-0">
 					<a href="./../../index.html" class="flex items-center">
 						<img src="./../../public/images/mimon_logo.png" class="h-12 me-3" alt="Logo Mimon">
-						<span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700">Mimon</span>
+						<span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-700">
+							Mimon
+						</span>
 					</a>
 				</div>
 				<div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
 					<div>
 						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Ressources</h2>
-						<ul class="text-gray-500 dark:text-gray-400 font-medium">
+						<ul class="text-gray-500 font-medium">
 							<li class="mb-4">
 								<a href="./jobs/career.html"
 									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
-									Carrière</a>
+									Carrière
+								</a>
 							</li>
 							<li>
 								<a href="./support.html"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Centre
-									d'aide</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Centre d'aide
+								</a>
 							</li>
 						</ul>
 					</div>
 					<div>
 						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Suivez-nous</h2>
-						<ul class="text-gray-500 dark:text-gray-400 font-medium">
+						<ul class="text-gray-500 font-medium">
 							<li class="mb-4">
 								<a href="https://facebook.com" target="_blank" rel="noopener"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Facebook</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Facebook
+								</a>
 							</li>
 							<li>
 								<a href="https://x.com/?lang=fr" target="_blank" rel="noopener"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Twitter</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Twitter
+								</a>
 							</li>
 						</ul>
 					</div>
 					<div>
 						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Légal</h2>
-						<ul class="text-gray-500 dark:text-gray-400 font-medium">
+						<ul class="text-gray-500 font-medium">
 							<li class="mb-4">
 								<a href="#"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Politique
-									de
-									confidentialité</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Politique de confidentialité
+								</a>
 							</li>
 							<li>
 								<a href="#"
-									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">Termes
-									et
-									conditions</a>
+									class="text-gray-500 hover:text-gray-900 hover:cursor-pointer hover:underline">
+									Termes et conditions
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -151,8 +583,7 @@
 						<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white lg:text-center">
 							Téléchargements
 						</h2>
-						<ul
-							class="text-gray-500 dark:text-gray-400 font-medium flex flex-col lg:justify-center lg:items-center">
+						<ul class="text-gray-500 font-medium flex flex-col lg:justify-center lg:items-center">
 							<li class="mb-4 block">
 								<a href="https://www.apple.com/ca/app-store/" target="_blank" rel="noopener"
 									class="cursor-pointer">
@@ -171,11 +602,10 @@
 					</div>
 				</div>
 			</div>
-			<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+			<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8">
 			<div class="grid grid-cols-12">
-				<span class="text-sm text-start text-gray-500 dark:text-gray-400 col-span-10">© 2024 Mimon - Tous
-					droits
-					réservés.
+				<span class="text-sm text-start text-gray-500 col-span-10">
+					© 2024 Mimon - Tous droits réservés.
 				</span>
 				<div class="flex justify-end items-center col-span-2 mr-2 lg:mr-6">
 					<a href="https://facebook.com" target="_blank" rel="noopener"
