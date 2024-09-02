@@ -8,7 +8,6 @@ export default {
     './resources/views/**/*.html',
     './resources/**/*.{js,ts,jsx,tsx,css,scss}',
     './public/css/styles.css',
-    "./node_modules/tw-elements/js/**/*.js",
   ],
   theme: {
     colors: {
@@ -43,5 +42,5 @@ export default {
       },
     },
   },
-  plugins: [require("tw-elements/plugin.cjs"), require('flowbite/plugin')],
+  plugins: [require('flowbite/plugin')],
 }
