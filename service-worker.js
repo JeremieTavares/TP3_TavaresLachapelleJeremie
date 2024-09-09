@@ -26,7 +26,6 @@ const FILES_TO_CACHE = [
     'public/images/download_apple_store_dark_fr_CA.svg',
     'public/images/download_google_store_dark_fr_CA.png',
     'public/images/island-darken-blur-low-size.jpg',
-    'public/images/island-darken-blur.png',
     'public/images/island-destination.png',
     'public/images/mimon_logo.png',
     'public/images/north-quebec-destination.png',
