@@ -1,5 +1,6 @@
 import { handleFocusStyles } from "./utils/functions";
 import "flowbite";
+import "/node_modules/@fortawesome/fontawesome-free/js/all.min.js";
 import PWAInstaller from "./components/PWAInstaller";
 
 // fonction pour activer le comportement lorsqu'un élément est focus avec la touche Tab
