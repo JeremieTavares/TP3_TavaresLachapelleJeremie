@@ -127,6 +127,7 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME).then((cache) => {
             console.log('[ServiceWorker] Caching app files');
             return cache.addAll(FILES_TO_CACHE);
+        }).catch((error) => {
         })
     );
     self.skipWaiting(); // Force activation of the new Service Worker
